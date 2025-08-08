@@ -85,6 +85,15 @@ UniValue createasset(const JSONRPCRequest &request) {
                                  "'{\"name\":\"sub test asset\", \"is_root\":false, \"root_name\":\"TEST ASSET\", \"isunique\":false, \"maxMintCount\":10, \n"
                                  "\"decimalpoint\":2, \"referenceHash\":\"\", \"type\":0,  \"targetAddress\":\"yQPzaDmnF3FtRsoWijUN7aZDcEdyNAcmVk\", \n"
                                  "\"issueFrequency\":0, \"amount\":10000,\"ownerAddress\":\"yRyiTCKfqMG2dQ9oUvs932TjN1R1MNUTWM\"}'")
+                + HelpExampleRpc("createasset",
+                                 "'{\"name\":\"TEST ASSET\", \"updatable\":true, \"is_root\":true, \"isunique\":false, \"maxMintCount\":10, \n"
+                                 "\"decimalpoint\":2, \"referenceHash\":\"\", \"type\":0, \"targetAddress\":\"yQPzaDmnF3FtRsoWijUN7aZDcEdyNAcmVk\", \n"
+                                 "\"issueFrequency\":0, \"amount\":10000,\"ownerAddress\":\"yRyiTCKfqMG2dQ9oUvs932TjN1R1MNUTWM\"}'")
+                + HelpExampleRpc("createasset",
+                                 "'{\"name\":\"sub test asset\", \"is_root\":false, \"root_name\":\"TEST ASSET\", \"isunique\":false, \"maxMintCount\":10, \n"
+                                 "\"decimalpoint\":2, \"referenceHash\":\"\", \"type\":0,  \"targetAddress\":\"yQPzaDmnF3FtRsoWijUN7aZDcEdyNAcmVk\", \n"
+                                 "\"issueFrequency\":0, \"amount\":10000,\"ownerAddress\":\"yRyiTCKfqMG2dQ9oUvs932TjN1R1MNUTWM\"}'")
+                
         );
 
     if (getAssetsFees() == 0) {
@@ -318,6 +327,10 @@ UniValue updateasset(const JSONRPCRequest &request) {
                                  "'{\"name\":\"test asset\", \"updatable\":true, \"maxMintCount\":10, \"referenceHash\":\"\"\n,"
                                  "\"type\":0, \"targetAddress\":\"yQPzaDmnF3FtRsoWijUN7aZDcEdyNAcmVk\", \"issueFrequency\":0\n,"
                                  "\"amount\":10000,\"ownerAddress\":\"yRyiTCKfqMG2dQ9oUvs932TjN1R1MNUTWM\"}'")
+                + HelpExampleRpc("updateasset",
+                                 "'{\"name\":\"test asset\", \"updatable\":true, \"maxMintCount\":10, \"referenceHash\":\"\"\n,"
+                                 "\"type\":0, \"targetAddress\":\"yQPzaDmnF3FtRsoWijUN7aZDcEdyNAcmVk\", \"issueFrequency\":0\n,"
+                                 "\"amount\":10000,\"ownerAddress\":\"yRyiTCKfqMG2dQ9oUvs932TjN1R1MNUTWM\"}'")
         );
 
     if (getAssetsFees() == 0) {
@@ -518,8 +531,7 @@ UniValue mintasset(const JSONRPCRequest &request) {
 
                 "\nExamples:\n"
                 + HelpExampleCli("mintasset", "773cf7e057127048711d16839e4612ffb0f1599aef663d96e60f5190eb7de9a9")
-                + HelpExampleCli("mintasset",
-                                 "773cf7e057127048711d16839e4612ffb0f1599aef663d96e60f5190eb7de9a9" "yZBvV16YFvPx11qP2XhCRDi7y2e1oSMpKH" "1000")
+                + HelpExampleRpc("mintasset", "\"773cf7e057127048711d16839e4612ffb0f1599aef663d96e60f5190eb7de9a9\"")
 
         );
 
@@ -751,6 +763,7 @@ UniValue getassetdetailsbyname(const JSONRPCRequest &request) {
 
                 "\nExamples:\n"
                 + HelpExampleCli("getassetdetailsbyname", "WenMoon")
+                + HelpExampleRpc("getassetdetailsbyname", "\"WenMoon\"")
         );
     std::string assetId;
 
@@ -783,6 +796,7 @@ UniValue getassetdetailsbyid(const JSONRPCRequest &request) {
 
                 "\nExamples:\n"
                 + HelpExampleCli("getassetdetailsbyid", "b683eccf3267561e1d5f5ad0caeb362b50d0d3a68e71cceee69869df173fed12")
+                + HelpExampleRpc("getassetdetailsbyid", "\"b683eccf3267561e1d5f5ad0caeb362b50d0d3a68e71cceee69869df173fed12\"")
         );
 
     std::string assetId = request.params[0].get_str();
@@ -807,6 +821,7 @@ UniValue listassetsbalance(const JSONRPCRequest &request) {
 
                 "\nExamples:\n"
                 + HelpExampleCli("listassetsbalance", "")
+                + HelpExampleRpc("listassetsbalance", "")
         );
 
     std::shared_ptr <CWallet> const wallet = GetWalletForJSONRPCRequest(request);
@@ -1095,6 +1110,8 @@ UniValue listassets(const JSONRPCRequest &request) {
         },
         RPCExamples{
                 HelpExampleCli("listassets", "")
+                + HelpExampleCli("listassets", "true 10 10")
+                + HelpExampleRpc("listassets", "true, 10, 10")
         },
     }.Check(request);
 
@@ -1163,6 +1180,7 @@ UniValue listaddressesbyasset(const JSONRPCRequest &request)
                 + HelpExampleCli("listaddressesbyasset", "\"ASSET_NAME\" false 2 0")
                 + HelpExampleCli("listaddressesbyasset", "\"ASSET_NAME\" true")
                 + HelpExampleCli("listaddressesbyasset", "\"ASSET_NAME\"")
+                + HelpExampleRpc("listaddressesbyasset", "\"ASSET_NAME\"")
         );
 
     LOCK(cs_main);
@@ -1238,6 +1256,7 @@ UniValue listassetbalancesbyaddress(const JSONRPCRequest& request)
             + HelpExampleCli("listassetbalancesbyaddress", "\"myaddress\" false 2 0")
             + HelpExampleCli("listassetbalancesbyaddress", "\"myaddress\" true")
             + HelpExampleCli("listassetbalancesbyaddress", "\"myaddress\"")
+            + HelpExampleRpc("listassetbalancesbyaddress", "\"myaddress\"")
         );
 
     std::string address = request.params[0].get_str();
