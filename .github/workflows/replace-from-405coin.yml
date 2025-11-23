@@ -25,12 +25,15 @@ jobs:
           mkdir new_content
           unzip 405Coin.zip -d new_content
 
-      - name: Sync files from ZIP (with delete)
+      - name: Wipe repo (keep .git and .github)
         run: |
-          rsync -a --delete new_content/ ./ \
-            --exclude '.git/' \
-            --exclude '.github/'
+          shopt -s extglob
+          rm -rf !(.git|.github|new_content)
+          shopt -u extglob
 
+      - name: Move files from ZIP into repo
+        run: |
+          cp -a new_content/. .
           rm -rf new_content
           rm -f 405Coin.zip
 
