@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,6 +8,7 @@
 #define BITCOIN_CONSENSUS_PARAMS_H
 
 #include <uint256.h>
+#include <amount.h>
 #include <founder_payment.h>
 #include <llmq/quorums_parameters.h>
 #include <smartnode/smartnode-collaterals.h>
@@ -35,6 +36,9 @@ namespace Consensus {
         uint256 hashGenesisBlock;
         uint256 hashDevnetGenesisBlock;
         int nSubsidyHalvingInterval;
+        CAmount nInitialSubsidy{0}; // base block subsidy before halvings
+        CAmount nPremineSubsidy{0}; // special subsidy for premine block (if any)
+        int nPremineHeight{0};      // height of premine block (0 disables premine logic)
         int nSmartnodePaymentsStartBlock;
         int nSmartnodePaymentsIncreaseBlock;
         int nSmartnodePaymentsIncreasePeriod; // in blocks

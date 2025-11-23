@@ -5,7 +5,7 @@ file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 ---------------------------------------------------------------------
 
-This file contains all changes for the raptoreum theme "Traditional".
+This file contains all changes for the 405Coin theme "Traditional".
 
 NOTE: This file gets not appended to the general.css. The Traditional
 theme is a standalone theme which just fixes some bugs in the OS default
@@ -25,8 +25,8 @@ Loaded in GUIUtil::loadStyleSheet() in guitil.cpp.
 #008de4
 #047ac2
 #222222
-#a84832
-#c79304
+#40c7c4
+#A681DD
 #ccfafafa
 
 </colors>
@@ -38,7 +38,7 @@ QToolBar / QToolButton
 
 QToolBar QLabel#lblToolbarLogo {
     padding: 12px;
-    background-image: url(':/images/raptoreum_logo_toolbar_light');
+    background-image: url(':/images/405Coin_logo_toolbar_light');
     height: 2.5em;
 }
 
@@ -233,7 +233,7 @@ OverviewPage
 ******************************************************/
 
 QWidget#OverviewPage QLabel#labelAlerts {
-     background-color: #c79304;
+     background-color: #A681DD;
      color: #222222;
      border-radius: 5px;
      padding: 5px;
@@ -242,7 +242,7 @@ QWidget#OverviewPage QLabel#labelAlerts {
 QWidget .QFrame#frame .QLabel#labelWalletStatus, /* Wallet Sync Status */
 QWidget .QFrame#frameCoinJoin .QLabel#labelCoinJoinSyncStatus, /* CoinJoin Sync Status */
 QWidget .QFrame#frame_2 .QLabel#labelTransactionsStatus { /* Recent Transactions Sync Status */
-    color: #a84832;
+    color: #40c7c4;
 }
 
 QWidget .QFrame#frame_2 QListView { /* Transaction List */
@@ -261,7 +261,7 @@ QDialog#SendCoinsDialog QLabel#labelBalance {
 }
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlInsuffFunds { /* Insufficient Funds Label */
-    color: #a84832;
+    color: #40c7c4;
 }
 
 /******************************************************
@@ -274,7 +274,7 @@ QDialog#SendAssetsDialog QLabel#labelBalance {
 }
 
 QDialog#SendAssetsDialog .QFrame#frameAssetControl .QLabel#labelAssetControlInsuffFunds { /* Insufficient Funds Label */
-    color: #a84832;
+    color: #40c7c4;
 }
 
 /******************************************************
@@ -287,7 +287,7 @@ QDialog#CreateAssetsDialog QLabel#labelBalance {
 }
 
 QDialog#CreateAssetsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlInsuffFunds { /* Insufficient Funds Label */
-    color: #a84832;
+    color: #40c7c4;
 }
 
 /******************************************************

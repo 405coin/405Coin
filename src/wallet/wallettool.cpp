@@ -12,7 +12,7 @@
 namespace WalletTool {
 
 // The standard wallet deleter function blocks on the validation interface
-// queue, which doesn't exist for the raptoreum-wallet. Define our own
+// queue, which doesn't exist for the 405Coin-wallet. Define our own
 // deleter here.
     static void WalletToolReleaseWallet(CWallet *wallet) {
         wallet->WalletLogPrintf("Releasing wallet\n");

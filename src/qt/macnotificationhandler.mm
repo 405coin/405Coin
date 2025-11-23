@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.raptoreum.Raptoreum-Qt";
+        return @"org.405Coin.405Coin-Qt";
     } else {
         return [self __bundleIdentifier];
     }

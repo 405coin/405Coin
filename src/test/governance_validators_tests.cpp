@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 
 #include <governance/governance-validators.h>
 #include <util/strencodings.h>
@@ -7,7 +7,7 @@
 #include <test/data/proposals_valid.json.h>
 #include <test/data/proposals_invalid.json.h>
 
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <iostream>
 #include <fstream>

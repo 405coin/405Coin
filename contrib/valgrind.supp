@@ -1,10 +1,10 @@
-# Valgrind suppressions file for Raptoreum.
+# Valgrind suppressions file for 405Coin.
 #
 # Includes known Valgrind warnings in our dependencies that cannot be fixed
 # in-tree.
 #
 # Example use:
-# $ valgrind --suppressions=contrib/valgrind.supp src/test/test_raptoreum
+# $ valgrind --suppressions=contrib/valgrind.supp src/test/test_405Coin
 # $ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
 #       --show-leak-kinds=all src/test/test_raporeum --log_level=test_suite
 {

@@ -5,44 +5,44 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with `make check`.
 
-To run the raptoreumd tests manually, launch `src/test/test_raptoreum`. To recompile
+To run the 405Coind tests manually, launch `src/test/test_405Coin`. To recompile
 after a test file was modified, run `make` and then run the test again. If you
 modify a non-test file, use `make -C src/test` to recompile only what's needed
-to run the raptoreumd tests.
+to run the 405Coind tests.
 
-To add more raptoreumd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more 405Coind tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the `test/` directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the raptoreum-qt tests manually, launch `src/qt/test/test_raptoreum-qt`
+To run the 405Coin-qt tests manually, launch `src/qt/test/test_405Coin-qt`
 
-To add more raptoreum-qt tests, add them to the `src/qt/test/` directory and
+To add more 405Coin-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.
 
 ### Running individual tests
 
-test_raptoreum has some built-in command-line arguments; for
+test_405Coin has some built-in command-line arguments; for
 example, to run just the getarg_tests verbosely:
 
-    test_raptoreum --log_level=all --run_test=getarg_tests
+    test_405Coin --log_level=all --run_test=getarg_tests
 
-... or to run just the doubleraptoreum test:
+... or to run just the double405Coin test:
 
-    test_raptoreum --run_test=getarg_tests/doubleraptoreum
+    test_405Coin --run_test=getarg_tests/double405Coin
 
-Run `test_raptoreum --help` for the full list.
+Run `test_405Coin --help` for the full list.
 
 ### Note on adding test cases
 
 The sources in this directory are unit test cases.  Boost includes a
-unit testing framework, and since Raptoreum Core already uses boost, it makes
+unit testing framework, and since 405Coin Core already uses boost, it makes
 sense to simply use this framework rather than require developers to
 configure some other framework (we want as few impediments to creating
 unit tests as possible).
 
-The build system is setup to compile an executable called `test_raptoreum`
+The build system is setup to compile an executable called `test_405Coin`
 that runs all of the unit tests.  The main source file is called
-test_raptoreum.cpp. To add a new unit test file to our test suite you need
+test_405Coin.cpp. To add a new unit test file to our test suite you need
 to add the file to `src/Makefile.test.include`. The pattern is to create
 one test file for each class or source file for which you want to create
 unit tests.  The file naming convention is `<source_filename>_tests.cpp`

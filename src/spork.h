@@ -1,5 +1,6 @@
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -209,7 +210,7 @@ public:
     void Serialize(Stream &s) const {
         // We don't serialize pubkey ids cus pubkeys should be
         // hardcoded instead or be set with cmdline or options.
-        // Should not reuse pubkeys from previous raptoreumd run.
+        // Should not reuse pubkeys from previous 405Coind run.
         // We don't serialize private key to prevent its leakage.
         LOCK(cs);
         s << SERIALIZATION_VERSION_STRING << mapSporksByHash << mapSporksActive;

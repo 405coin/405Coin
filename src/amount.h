@@ -25,7 +25,7 @@ static const CAmount COIN = 100000000;
  * critical; in unusual circumstances like a(nother) overflow bug that allowed
  * for the creation of coins out of thin air modification could lead to a fork.
  * */
-static const CAmount MAX_MONEY = 21000000000 * COIN;
+static const CAmount MAX_MONEY = 4050000000LL * COIN;
 static const CAmount OLD_MAX_MONEY = 21000000 * COIN;
 
 inline bool MoneyRange(const CAmount &nValue) {

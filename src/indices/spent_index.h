@@ -165,7 +165,7 @@ struct CAddressUnspentKey {
     CAddressUnspentKey(unsigned int addressType, uint160 addressHash, uint256 txid, size_t indexValue) {
         type = addressType;
         hashBytes = addressHash;
-        asset = "RTM";
+        asset = "405";
         txhash = txid;
         index = indexValue;
     }
@@ -210,7 +210,7 @@ struct CAddressUnspentValue {
     CAddressUnspentValue(CAmount sats, CScript scriptPubKey, int height, int spendableHeight, int spendableTime) {
         satoshis = sats;
         script = scriptPubKey;
-        asset = "RTM";
+        asset = "405";
         isUnique = false;
         uniqueId = 0;
         blockHeight = height;
@@ -293,7 +293,7 @@ struct CAddressIndexKey {
                      size_t indexValue, bool isSpending) {
         type = addressType;
         hashBytes = addressHash;
-        asset = "RTM";
+        asset = "405";
         blockHeight = height;
         txindex = blockindex;
         txhash = txid;

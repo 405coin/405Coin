@@ -1,12 +1,12 @@
 WINDOWS BUILD NOTES
 ====================
 
-Below are some notes on how to build Raptoreum Core for Windows.
+Below are some notes on how to build 405Coin Core for Windows.
 
-The options known to work for building Raptoreum Core on Windows are:
+The options known to work for building 405Coin Core on Windows are:
 
 * On Linux, using the [Mingw-w64](https://www.mingw-w64.org/) cross compiler tool chain. 
-and is the platform used to build the Raptoreum Core Windows release binaries.
+and is the platform used to build the 405Coin Core Windows release binaries.
 * On Windows, using [Windows
 Subsystem for Linux (WSL)](https://docs.microsoft.com/windows/wsl/about) and the Mingw-w64 cross compiler tool chain.
 
@@ -43,8 +43,8 @@ If you want to build the windows installer with `make deploy` you need [NSIS](ht
 
 Acquire the source in the usual way:
 
-	git clone https://github.com/raptor3um/raptoreum.git
-	cd raptoreum
+	git clone https://github.com/raptor3um/405Coin.git
+	cd 405Coin
 
 ## Building for 64-bit Windows
 
@@ -63,8 +63,8 @@ sudo apt install g++-mingw-w64-x86-64
 
 Once the toolchain is installed the build steps are common:
 
-Note that for WSL the Raptoreum Core source path MUST be somewhere in the default mount file system, for
-example /usr/src/raptoreum, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
+Note that for WSL the 405Coin Core source path MUST be somewhere in the default mount file system, for
+example /usr/src/405Coin, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
 This means you cannot use a directory that is located directly on the host Windows file system to perform the build.
 
 Additional WSL Note:
@@ -95,9 +95,9 @@ Installation
 After building using the Windows subsystem it can be useful to copy the compiled
 executables to a directory on the Windows drive in the same directory structure
 as they appear in the release `.zip` archive. This can be done in the following
-way. This will install to `c:\workspace\raptoreum`, for example:
+way. This will install to `c:\workspace\405Coin`, for example:
 
-    make install DESTDIR=/mnt/c/workspace/raptoreum
+    make install DESTDIR=/mnt/c/workspace/405Coin
 
 You can also create an installer using:
 

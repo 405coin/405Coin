@@ -107,7 +107,7 @@ public:
     void ListSelectedAssets(std::vector <COutPoint> &vOutpoints) const {
         vOutpoints.assign(setAssetsSelected.begin(), setAssetsSelected.end());
     }
-    // Raptoreum-specific helpers
+    // 405Coin-specific helpers
 
     void UseCoinJoin(bool fUseCoinJoin) {
         nCoinType = fUseCoinJoin ? CoinType::ONLY_FULLY_MIXED : CoinType::ALL_COINS;

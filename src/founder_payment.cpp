@@ -44,7 +44,7 @@ void FounderPayment::FillFounderPayment(CMutableTransaction &txNew, int nBlockHe
     CTxDestination founderAddr = DecodeDestination(founderAddress);
     if (!IsValidDestination(founderAddr))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
-                           strprintf("Invalid Raptoreum Founder Address: %s", founderAddress.c_str()));
+                           strprintf("Invalid 405Coin Founder Address: %s", founderAddress.c_str()));
     CScript payee = GetScriptForDestination(founderAddr);
     // GET FOUNDER PAYMENT VARIABLES SETUP
 

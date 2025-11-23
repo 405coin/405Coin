@@ -33,7 +33,7 @@ class DisablePrivateKeysTest(BitcoinTestFramework):
         addr = w2.getnewaddress('')
         privkey = w2.dumpprivkey(addr)
         assert_raises_rpc_error(-4, 'Cannot import private keys to a wallet with private keys disabled', w1.importprivkey, privkey)
-        result = w1.importmulti([{'scriptPubKey': {'address': addr}, 'timestamp': 'now', 'keys': [privkey]}])
+        result = w1.impo405ulti([{'scriptPubKey': {'address': addr}, 'timestamp': 'now', 'keys': [privkey]}])
         assert(not result[0]['success'])
         assert('warning' not in result[0])
         assert_equal(result[0]['error']['code'], -4)

@@ -1,6 +1,6 @@
-# Support for Output Descriptors in Raptoreum Core
+# Support for Output Descriptors in 405Coin Core
 
-Since Raptoreum Core v0.17 with Future Lock Transactions, 
+Since 405Coin Core v0.17 with Future Lock Transactions, 
 there is support for Output Descriptors in the
 `scantxoutset` RPC call. This is simple language used to
 describe this collection of output scripts.
@@ -136,7 +136,7 @@ steps, or for dumping wallet descriptors including private key material.
 ### Compatibility with old wallets
 
 In order to easily represent the sets of scripts currently supported by
-existing Raptoreum Core wallets, a convenience function `combo` is
+existing 405Coin Core wallets, a convenience function `combo` is
 provided, which takes as input a public key, and constructs the P2PK and
 P2PKH scripts for that key.
 
@@ -152,7 +152,7 @@ be detected in descriptors up to 501 characters, and up to 3 errors in longer
 ones. For larger numbers of errors, or other types of errors, there is a
 roughly 1 in a trillion chance of not detecting the errors.
 
-All RPCs in Raptoreum Core will include the checksum in their output. Only
+All RPCs in 405Coin Core will include the checksum in their output. Only
 certain RPCs require checksums on input, including `deriveaddress` and
-`importmulti`. The checksum for a descriptor without one can be computed
+`impo405ulti`. The checksum for a descriptor without one can be computed
 using the `getdescriptorinfo` RPC.

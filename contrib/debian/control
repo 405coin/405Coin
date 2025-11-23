@@ -1,8 +1,8 @@
-Source: raptoreum
+Source: 405Coin
 Section: utils
 Priority: optional
-Maintainer: Holger Schinzel <holger@raptoreum.org>
-Uploaders: Holger Schinzel <holger@raptoreum.org>
+Maintainer: Holger Schinzel <holger@405Coin.org>
+Uploaders: Holger Schinzel <holger@405Coin.org>
 Build-Depends: debhelper,
  devscripts,
  automake,
@@ -22,31 +22,31 @@ Build-Depends: debhelper,
  python,
  libzmq3-dev
 Standards-Version: 3.9.2
-Homepage: https://www.raptoreum.org/
-Vcs-Git: git://github.com/raptor3um/raptoreum.git
-Vcs-Browser: https://github.com/raptor3um/raptoreum
+Homepage: https://www.405Coin.org/
+Vcs-Git: git://github.com/raptor3um/405Coin.git
+Vcs-Browser: https://github.com/raptor3um/405Coin
 
-Package: raptoreumd
+Package: 405Coind
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Raptoreum is an experimental new digital currency that enables instant, private
- payments to anyone, anywhere in the world. Raptoreum uses peer-to-peer
+ 405Coin is an experimental new digital currency that enables instant, private
+ payments to anyone, anywhere in the world. 405Coin uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Raptoreum Core
+ and issuing money are carried out collectively by the network. 405Coin Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, raptoreumd, and the CLI tool
- raptoreum-cli to interact with the daemon.
+ This package provides the daemon, 405Coind, and the CLI tool
+ 405Coin-cli to interact with the daemon.
 
-Package: raptoreum-qt
+Package: 405Coin-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Raptoreum is an experimental new digital currency that enables instant, private
- payments to anyone, anywhere in the world. Raptoreum uses peer-to-peer
+ 405Coin is an experimental new digital currency that enables instant, private
+ payments to anyone, anywhere in the world. 405Coin uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Raptoreum Core
+ and issuing money are carried out collectively by the network. 405Coin Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides Raptoreum-Qt, a GUI for Raptoreum based on Qt.
+ This package provides 405Coin-Qt, a GUI for 405Coin based on Qt.

@@ -1,5 +1,5 @@
 // Copyright (c) 2018 The Bitcoin Core developers
-// Copyright (c) 2022-2023 The Raptoreum developers
+// Copyright (c) 2022-2023 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/licenses/mit-license.php
 
@@ -28,7 +28,7 @@ public:
 
     void Construct(NodeContext &node) const override { LogPrintf("No wallet support compiled in!\n"); }
 
-    // Raptoreum specific code
+    // 405Coin specific code
     void AutoLockSmartnodeCollaterals() const override {}
 
     void InitCoinJoinSettings() const override {}

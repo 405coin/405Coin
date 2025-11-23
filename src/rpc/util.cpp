@@ -1,5 +1,5 @@
 // Copyright (c) 2017 The Bitcoin Core developers
-// Copyright (c) 2023 The Raptoreum developers
+// Copyright (c) 2023 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -171,7 +171,7 @@ CoinStatsHashType ParseHashType(const UniValue &param, const CoinStatsHashType d
 }
 
 std::string HelpExampleCli(const std::string &methodname, const std::string &args) {
-    return "> raptoreum-cli " + methodname + " " + args + "\n";
+    return "> 405Coin-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(const std::string &methodname, const std::string &args) {

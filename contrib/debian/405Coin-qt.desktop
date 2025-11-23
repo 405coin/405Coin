@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=405Coin Core
+Comment=405Coin P2P Cryptocurrency
+Comment[de]=Verbinde mit dem 405Coin peer-to-peer Netzwerk
+Comment[fr]=405Coin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=405Coin, eşten eşe kriptografik sanal para birimi
+Exec=405Coin-qt %u
+Terminal=false
+Type=Application
+Icon=405Coin128
+MimeType=x-scheme-handler/405Coin;
+Categories=Office;Finance;

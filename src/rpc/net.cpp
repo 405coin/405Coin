@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -367,7 +367,7 @@ UniValue getaddednodeinfo(const JSONRPCRequest &request) {
                                                  {RPCResult::Type::OBJ, "", "",
                                                   {
                                                           {RPCResult::Type::STR, "address",
-                                                           "The Raptoreum server IP and port we're connected to"},
+                                                           "The 405Coin server IP and port we're connected to"},
                                                           {RPCResult::Type::STR, "connected",
                                                            "connection, inbound or outbound"},
                                                   }},

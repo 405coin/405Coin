@@ -17,10 +17,10 @@ bool noui_ThreadSafeQuestion(const std::string & /* ignored interactive message 
 /** Non-GUI handler, which only logs a message. */
 void noui_InitMessage(const std::string &message);
 
-/** Connect all raptoreumd signal handlers */
+/** Connect all 405Coind signal handlers */
 void noui_connect();
 
-/** Suppress all raptoreumd signal handlers. Used to suppress output during test runs that produce expected error. */
+/** Suppress all 405Coind signal handlers. Used to suppress output during test runs that produce expected error. */
 void noui_suppress();
 
 /** Reconnects the regular Non-GUI handlers after having used noui_suppress. */

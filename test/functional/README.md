@@ -81,10 +81,10 @@ over the network (`CBlock`, `CTransaction`, etc, along with the network-level
 wrappers for them, `msg_block`, `msg_tx`, etc).
 
 - P2P tests have two threads. One thread handles all network communication
-with the raptoreumd(s) being tested (using python's asyncore package); the other
+with the 405Coind(s) being tested (using python's asyncore package); the other
 implements the test logic.
 
-- `P2PConnection` is the class used to connect to a raptoreumd.  `P2PInterface`
+- `P2PConnection` is the class used to connect to a 405Coind.  `P2PInterface`
 contains the higher level logic for processing P2P payloads and connecting to
 the Bitcoin Core node application logic. For custom behaviour, subclass the
 P2PInterface object and override the callback methods.
@@ -108,7 +108,7 @@ Base class for functional tests.
 Generally useful functions.
 
 #### [test_framework/mininode.py](test_framework/mininode.py)
-Basic code to support P2P connectivity to a raptoreumd.
+Basic code to support P2P connectivity to a 405Coind.
 
 #### [test_framework/script.py](test_framework/script.py)
 Utilities for manipulating transaction scripts (originally from python-bitcoinlib)

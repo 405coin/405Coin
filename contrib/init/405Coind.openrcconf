@@ -1,0 +1,33 @@
+# /etc/conf.d/405Coind: config file for /etc/init.d/405Coind
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/405Coincore/405Coin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/405Coind"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/405Coind.pid"
+
+# Where to write 405Coind data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/405Coind"
+
+# User and group to own 405Coind process
+#BITCOIND_USER="405Coincore"
+#BITCOIND_GROUP="405Coincore"
+
+# Path to 405Coind executable
+#BITCOIND_BIN="/usr/bin/405Coind"
+
+# Nice value to run 405Coind under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#BITCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for 405Coind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BITCOIND_SIGTERM_TIMEOUT=60

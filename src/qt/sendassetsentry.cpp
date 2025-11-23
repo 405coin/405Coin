@@ -1,4 +1,4 @@
-// Copyright (c) 2023 The Raptoreum developers
+// Copyright (c) 2023 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -37,7 +37,7 @@ SendAssetsEntry::SendAssetsEntry(QWidget *parent, bool hideFuture) :
 
     setButtonIcons();
 
-    // normal raptoreum address field
+    // normal 405Coin address field
     GUIUtil::setupAddressWidget(ui->payTo, this, true);
 
     GUIUtil::setFont({ui->payToLabel,
@@ -136,7 +136,7 @@ void SendAssetsEntry::futureToggleChanged() {
     bool isFuture = ui->futureCb->isChecked();
     if (isFuture) {
         char feeDisplay[18];
-        sprintf(feeDisplay, "%d RTM", getFutureFees());
+        sprintf(feeDisplay, "%d 405", getFutureFees());
         ui->feeDisplay->setText(feeDisplay);
     }
     ui->maturityLb->setVisible(isFuture);

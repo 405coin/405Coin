@@ -8,7 +8,7 @@
 #include <index/blockfilterindex.h>
 #include <miner.h>
 #include <pow.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <script/standard.h>
 #include <validation.h>
 

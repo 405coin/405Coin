@@ -1,6 +1,6 @@
 // Copyright (c) 2014 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -66,7 +66,7 @@ NetworkStyle::NetworkStyle(const QString &_appName, const int iconColorHueShift,
     // Allow for separate UI settings for testnets
     QApplication::setApplicationName(appName);
     // load pixmap
-    QPixmap appIconPixmap(":/icons/raptoreum");
+    QPixmap appIconPixmap(":/icons/405Coin");
 
     if (iconColorHueShift != 0 && iconColorSaturationReduction != 0) {
         // generate QImage from QPixmap
@@ -80,8 +80,7 @@ NetworkStyle::NetworkStyle(const QString &_appName, const int iconColorHueShift,
 
     appIcon = QIcon(appIconPixmap);
     trayAndWindowIcon = QIcon(appIconPixmap.scaled(QSize(256, 256)));
-    QString theme = GUIUtil::getActiveTheme();
-    splashImage = theme.startsWith("Dark") ? QPixmap(":/images/splash_dark") : QPixmap(":/images/splash_light");
+    splashImage = QPixmap(":/images/logo_404");
 }
 
 const NetworkStyle *NetworkStyle::instantiate(const QString &networkId) {

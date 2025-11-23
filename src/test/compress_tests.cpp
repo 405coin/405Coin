@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <compressor.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <stdint.h>
 

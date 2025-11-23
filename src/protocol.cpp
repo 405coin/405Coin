@@ -42,7 +42,7 @@ namespace NetMsgType {
     const char *CMPCTBLOCK = "cmpctblock";
     const char *GETBLOCKTXN = "getblocktxn";
     const char *BLOCKTXN = "blocktxn";
-// Raptoreum message types
+// 405Coin message types
     const char *LEGACYTXLOCKREQUEST = "ix";
     const char *SPORK = "spork";
     const char *GETSPORKS = "getsporks";
@@ -111,7 +111,7 @@ const static std::string allNetMessageTypes[] = {
         NetMsgType::CMPCTBLOCK,
         NetMsgType::GETBLOCKTXN,
         NetMsgType::BLOCKTXN,
-        // Raptoreum message types
+        // 405Coin message types
         // NOTE: do NOT include non-implmented here, we want them to be "Unknown command" in ProcessMessage()
         NetMsgType::LEGACYTXLOCKREQUEST,
         NetMsgType::SPORK,

@@ -37,7 +37,7 @@ EXPECTED_CIRCULAR_DEPENDENCIES=(
     "qt/addressbookpage -> qt/bitcoingui -> qt/walletview -> qt/receivecoinsdialog -> qt/addressbookpage"
     "qt/addressbookpage -> qt/bitcoingui -> qt/walletview -> qt/signverifymessagedialog -> qt/addressbookpage"
     "qt/addressbookpage -> qt/bitcoingui -> qt/walletview -> qt/sendcoinsdialog -> qt/sendcoinsentry -> qt/addressbookpage"
-    # Raptoreum
+    # 405Coin
     "coinjoin/coinjoin-server -> net_processing -> coinjoin/coinjoin-server"
     "evo/cbtx -> evo/simplifiedmns -> evo/cbtx"
     "evo/cbtx -> evo/specialtx -> evo/cbtx"

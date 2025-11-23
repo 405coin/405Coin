@@ -525,7 +525,7 @@ public:
     /** Used for obsolete pay-to-pubkey addresses indexing. */
     bool IsPayToPublicKey() const;
 
-    /**RTM assets*/
+    /**405 assets*/
     bool IsAssetScript() const;
 
     bool IsAssetScript(int &nIndex) const;

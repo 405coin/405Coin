@@ -1,5 +1,5 @@
 // Copyright (c) 2019-2021 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -178,7 +178,7 @@ namespace llmq {
 /*
 template<typename Callable> void TraceCL(const std::string name, Callable func)
 {
-  std::string namestr = "rtm-" + name; util::ThreadRename(namestr.c_str());
+  std::string namestr = "405-" + name; util::ThreadRename(namestr.c_str());
   try { LogPrintf("%s thread start\n", name); func(); LogPrintf("%s thread stop\n", name); }
   catch (...) { PrintExceptionContinue(std::current_exception(), name.c_str()); throw; }
 }

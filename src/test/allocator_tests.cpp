@@ -5,7 +5,7 @@
 #include <util/system.h>
 
 #include <support/allocators/secure.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <memory>
 

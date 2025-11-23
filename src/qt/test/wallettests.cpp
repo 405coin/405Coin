@@ -14,7 +14,7 @@
 #include <qt/transactionview.h>
 #include <qt/walletmodel.h>
 #include <key_io.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <validation.h>
 #include <wallet/wallet.h>
 #include <qt/overviewpage.h>
@@ -105,9 +105,9 @@ namespace {
 //
 // This also requires overriding the default minimal Qt platform:
 //
-//     QT_QPA_PLATFORM=xcb     src/qt/test/test_raptoreum-qt  # Linux
-//     QT_QPA_PLATFORM=windows src/qt/test/test_raptoreum-qt  # Windows
-//     QT_QPA_PLATFORM=cocoa   src/qt/test/test_raptoreum-qt  # macOS
+//     QT_QPA_PLATFORM=xcb     src/qt/test/test_405Coin-qt  # Linux
+//     QT_QPA_PLATFORM=windows src/qt/test/test_405Coin-qt  # Windows
+//     QT_QPA_PLATFORM=cocoa   src/qt/test/test_405Coin-qt  # macOS
     void TestGUI(interfaces::Node &node) {
         // Set up wallet and chain with 105 blocks (5 mature blocks for spending).
         TestChain100Setup test;
@@ -195,7 +195,7 @@ namespace {
                 QString paymentText = rlist->toPlainText();
                 QStringList paymentTextList = paymentText.split('\n');
                 QCOMPARE(paymentTextList.at(0), QString("Payment information"));
-                QVERIFY(paymentTextList.at(2).indexOf(QString("URI: raptoreum:")) != -1);
+                QVERIFY(paymentTextList.at(2).indexOf(QString("URI: 405Coin:")) != -1);
                 QVERIFY(paymentTextList.at(3).indexOf(QString("Address:")) != -1);
                 QCOMPARE(paymentTextList.at(4), QString("Amount: 0.00000001 ") + BitcoinUnits::name(unit));
                 QCOMPARE(paymentTextList.at(5), QString("Label: TEST_LABEL_1"));
@@ -228,7 +228,7 @@ namespace {
 void WalletTests::walletTests() {
 #ifdef Q_OS_MAC
     if (QApplication::platformName() == "minimal") {
-      QWARN("Skipping WalletTests on mac build with 'minimal' platform set due to Qt bugs. To run AppTests, invoke with 'test_raptoreum-qt -platform cocoa' on mac or use a linux or windows build.");
+      QWARN("Skipping WalletTests on mac build with 'minimal' platform set due to Qt bugs. To run AppTests, invoke with 'test_405Coin-qt -platform cocoa' on mac or use a linux or windows build.");
       return;
     }
 #endif

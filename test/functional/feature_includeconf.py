@@ -69,7 +69,7 @@ class IncludeConfTest(BitcoinTestFramework):
             # Restore initial file contents
             f.write("uacomment=relative\n")
 
-        with open(os.path.join(self.options.tmpdir, "node0", "raptoreum.conf"), "a", encoding='utf8') as f:
+        with open(os.path.join(self.options.tmpdir, "node0", "405Coin.conf"), "a", encoding='utf8') as f:
             f.write("includeconf=relative2.conf\n")
 
         self.restart_node(0)

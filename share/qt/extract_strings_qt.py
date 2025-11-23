@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2012-2016 The Bitcoin Core developers
-# Copyright (c)     -2022 The Raptoreum developers
+# Copyright (c)     -2022 The 405Coin developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or https://opensource.org/licenses/mit-license.php.
 '''
@@ -12,7 +12,7 @@ import operator
 import os
 import sys
 
-OUT_CPP="qt/raptoreumstrings.cpp"
+OUT_CPP="qt/405Coinstrings.cpp"
 EMPTY=['""']
 
 def parse_po(text):
@@ -76,11 +76,11 @@ f.write("""
 #define UNUSED
 #endif
 """)
-f.write('static const char UNUSED *raptoreum_strings[] = {\n')
-f.write('QT_TRANSLATE_NOOP("raptoreum-core", "%s"),\n' % (os.getenv('COPYRIGHT_HOLDERS'),))
+f.write('static const char UNUSED *405Coin_strings[] = {\n')
+f.write('QT_TRANSLATE_NOOP("405Coin-core", "%s"),\n' % (os.getenv('COPYRIGHT_HOLDERS'),))
 messages.sort(key=operator.itemgetter(0))
 for (msgid, msgstr) in messages:
     if msgid != EMPTY:
-        f.write('QT_TRANSLATE_NOOP("raptoreum-core", %s),\n' % ('\n'.join(msgid)))
+        f.write('QT_TRANSLATE_NOOP("405Coin-core", %s),\n' % ('\n'.join(msgid)))
 f.write('};\n')
 f.close()

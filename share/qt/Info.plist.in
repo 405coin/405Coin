@@ -9,7 +9,7 @@
     <string>x86_64</string>
   </array>
   <key>CFBundleIconFile</key>
-  <string>raptoreum.icns</string>
+  <string>405Coin.icns</string>
   <key>CFBundlePackageType</key>
   <string>APPL</string>
   <key>CFBundleShortVersionString</key>
@@ -19,23 +19,23 @@
   <key>CFBundleSignature</key>
   <string>????</string>
   <key>CFBundleExecutable</key>
-  <string>Raptoreum-Qt</string>
+  <string>405Coin-Qt</string>
   <key>CFBundleName</key>
-  <string>Raptoreum-Qt</string>
+  <string>405Coin-Qt</string>
   <key>LSHasLocalizedDisplayName</key>
   <true/>
   <key>CFBundleIdentifier</key>
-  <string>com.raptoreum.Raptoreum-Qt</string>
+  <string>com.405Coin.405Coin-Qt</string>
   <key>CFBundleURLTypes</key>
   <array>
     <dict>
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>com.raptoreum.RaptoreumPayment</string>
+      <string>com.405Coin.405CoinPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>raptoreum</string>
+        <string>405Coin</string>
       </array>
     </dict>
   </array>

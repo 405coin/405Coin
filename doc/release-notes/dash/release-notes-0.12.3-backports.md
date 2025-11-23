@@ -51,7 +51,7 @@
 - [`0e6672bf7`](https://github.com/raptor3um/raptoreum/commit/0e6672bf7) Merge pull request #1879 from codablock/pr_backport_bitcoin_0.14-11
 - [`c8e5c40ec`](https://github.com/raptor3um/raptoreum/commit/c8e5c40ec) Replace more example Raptoreum addresses with invalid addresses
 - [`7e4e4ea27`](https://github.com/raptor3um/raptoreum/commit/7e4e4ea27) Give 1000 bytes instead of 4000 bytes before the block is full
-- [`873bd6c80`](https://github.com/raptor3um/raptoreum/commit/873bd6c80) Fix new raptoreum-tx tests
+- [`873bd6c80`](https://github.com/raptor3um/raptoreum/commit/873bd6c80) Fix new 405Coind-tx tests
 - [`4959ff201`](https://github.com/raptor3um/raptoreum/commit/4959ff201) Fix formatting of help in sendfrom
 - [`a4430b624`](https://github.com/raptor3um/raptoreum/commit/a4430b624) Fix rpc tests
 - [`5901531bc`](https://github.com/raptor3um/raptoreum/commit/5901531bc) Use constant 7200 instead of TIMESTAMP_WINDOW for now
@@ -155,13 +155,13 @@
 - [`25074aeb4`](https://github.com/raptor3um/raptoreum/commit/25074aeb4) Merge #9644: [refactor] Remove using namespace <xxx> from src/
 - [`daa8582b1`](https://github.com/raptor3um/raptoreum/commit/daa8582b1) Merge #9615: Wallet incremental fee
 - [`b97eecc05`](https://github.com/raptor3um/raptoreum/commit/b97eecc05) Fix review nits
-- [`ec8176960`](https://github.com/raptor3um/raptoreum/commit/ec8176960) Remove segwit related raptoreum-tx tests
+- [`ec8176960`](https://github.com/raptor3um/raptoreum/commit/ec8176960) Remove segwit related 405Coind-tx tests
 - [`4d651621e`](https://github.com/raptor3um/raptoreum/commit/4d651621e) Update mainnet chainparams to use correct heights for BIP34/BIP65/BIP66
 - [`3824192e4`](https://github.com/raptor3um/raptoreum/commit/3824192e4) Update testnet chainparams to use correct heights for BIP34/BIP65/BIP66
 - [`715be73c6`](https://github.com/raptor3um/raptoreum/commit/715be73c6) Fix listsinceblock.py
 - [`9bc404a8c`](https://github.com/raptor3um/raptoreum/commit/9bc404a8c) Add "setbip69enabled" RPC usable by tests only
 - [`6bee150e8`](https://github.com/raptor3um/raptoreum/commit/6bee150e8) Require timestamps for importmulti keys
-- [`611cb6f27`](https://github.com/raptor3um/raptoreum/commit/611cb6f27) Fix new raptoreum-tx tests
+- [`611cb6f27`](https://github.com/raptor3um/raptoreum/commit/611cb6f27) Fix new 405Coind-tx tests
 - [`86753a890`](https://github.com/raptor3um/raptoreum/commit/86753a890) Add spaces around + in updateGlobalFeeVariables
 - [`228d774a6`](https://github.com/raptor3um/raptoreum/commit/228d774a6) Fix use of distdir and docker build dir
 - [`771c56a79`](https://github.com/raptor3um/raptoreum/commit/771c56a79) Fix new bitcoin-util-tests
@@ -202,7 +202,7 @@
 - [`4408b2d14`](https://github.com/raptor3um/raptoreum/commit/4408b2d14) Merge #9222: Add 'subtractFeeFromAmount' option to 'fundrawtransaction'.
 - [`5b763faba`](https://github.com/raptor3um/raptoreum/commit/5b763faba) Merge #9468: [Depends] Dependency updates for 0.14.0
 - [`74bfe0b22`](https://github.com/raptor3um/raptoreum/commit/74bfe0b22) Merge #9261: Add unstored orphans with rejected parents to recentRejects
-- [`53820de3e`](https://github.com/raptor3um/raptoreum/commit/53820de3e) Remove SegWit related code in raptoreum-tx
+- [`53820de3e`](https://github.com/raptor3um/raptoreum/commit/53820de3e) Remove SegWit related code in 405Coind-tx
 - [`a0d089eda`](https://github.com/raptor3um/raptoreum/commit/a0d089eda) Merge #8883: Add all standard TXO types to bitcoin-tx
 - [`658479355`](https://github.com/raptor3um/raptoreum/commit/658479355) Merge #9472: Disentangle progress estimation from checkpoints and update it
 - [`cee8cf1be`](https://github.com/raptor3um/raptoreum/commit/cee8cf1be) Merge #9518: Return height of last block pruned by pruneblockchain RPC
@@ -775,7 +775,7 @@
 - [`249167ab8`](https://github.com/raptor3um/raptoreum/commit/249167ab8) Python 3 in .travis.yml
 - [`a1111cdf6`](https://github.com/raptor3um/raptoreum/commit/a1111cdf6) Raptoreumify addresses/keys in signmessages.py RPC test
 - [`21aaf9289`](https://github.com/raptor3um/raptoreum/commit/21aaf9289) Introduce redirect_stderr argument to start_node
-- [`fbe36d3db`](https://github.com/raptor3um/raptoreum/commit/fbe36d3db) Pass -createwalletbackups=0 to raptoreumd when running rpc tests
+- [`fbe36d3db`](https://github.com/raptor3um/raptoreum/commit/fbe36d3db) Pass -createwalletbackups=0 to 405Coind when running rpc tests
 - [`69dd8f4a6`](https://github.com/raptor3um/raptoreum/commit/69dd8f4a6) Python 3 fixes/porting in rpc tests
 - [`2924b3440`](https://github.com/raptor3um/raptoreum/commit/2924b3440) Cast command to str when calling show_debug_msg
 - [`6dc4a1385`](https://github.com/raptor3um/raptoreum/commit/6dc4a1385) Merge #8110: [Doc] Add benchmarking notes

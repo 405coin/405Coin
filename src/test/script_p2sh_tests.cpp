@@ -13,7 +13,7 @@
 #include <script/script_error.h>
 #include <policy/settings.h>
 #include <script/sign.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <vector>
 

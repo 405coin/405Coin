@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -538,7 +538,7 @@ void TransactionView::showAddressQRCode() {
     QRDialog *dialog = new QRDialog(this);
 
     dialog->setAttribute(Qt::WA_DeleteOnClose);
-    dialog->setInfo(tr("QR code"), "raptoreum:" + strAddress, "", strAddress);
+    dialog->setInfo(tr("QR code"), "405Coin:" + strAddress, "", strAddress);
     dialog->show();
 }
 

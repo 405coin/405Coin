@@ -37,7 +37,7 @@ public:
     //! Add wallets that should be opened to list of chain clients.
     void Construct(NodeContext &node) const override;
 
-    // Raptoreum Specific Wallet Init
+    // 405Coin Specific Wallet Init
     void AutoLockSmartnodeCollaterals() const override;
 
     void InitCoinJoinSettings() const override;

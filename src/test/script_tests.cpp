@@ -12,11 +12,11 @@
 #include <script/sign.h>
 #include <util/system.h>
 #include <util/strencodings.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <rpc/util.h>
 
 #if defined(HAVE_CONSENSUS_LIB)
-#include <script/raptoreumconsensus.h>
+#include <script/405Coinconsensus.h>
 #endif
 
 #include <fstream>
@@ -176,9 +176,9 @@ DoTest(const CScript &scriptPubKey, const CScript &scriptSig, int flags, const s
 #if defined(HAVE_CONSENSUS_LIB)
     CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
     stream << tx2;
-    int libconsensus_flags = flags & raptoreumconsensus_SCRIPT_FLAGS_VERIFY_ALL;
+    int libconsensus_flags = flags & coin405consensus_SCRIPT_FLAGS_VERIFY_ALL;
     if (libconsensus_flags == flags) {
-        BOOST_CHECK_MESSAGE(raptoreumconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, nullptr) == expect,message);
+        BOOST_CHECK_MESSAGE(coin405consensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, libconsensus_flags, nullptr) == expect,message);
     }
 #endif
 }

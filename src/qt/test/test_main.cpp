@@ -1,23 +1,23 @@
 // Copyright (c) 2009-2016 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/raptoreum-config.h>
+#include <config/405Coin-config.h>
 #endif
 
 #include <chainparams.h>
 #include <interfaces/node.h>
-#include <qt/raptoreum.h>
+#include <qt/405Coin.h>
 #include <qt/test/apptests.h>
 #include <qt/test/rpcnestedtests.h>
 #include <util/system.h>
 #include <qt/test/uritests.h>
 #include <qt/test/compattests.h>
 #include <qt/test/trafficgraphdatatests.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #if defined(ENABLE_WALLET)
 #include <qt/test/wallettests.h>
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
     // Don't remove this, it's needed to access
     // QApplication:: and QCoreApplication:: in the tests
     BitcoinApplication app(*node);
-    app.setApplicationName("RTM-Qt-test");
+    app.setApplicationName("405-Qt-test");
 
     AppTests app_tests(app);
     if (QTest::qExec(&app_tests) != 0) {

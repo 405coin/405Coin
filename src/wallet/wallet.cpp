@@ -2,6 +2,7 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -3081,7 +3082,7 @@ void CWallet::AvailableAssets(std::map <std::string, std::vector<COutput>> &mapA
 }
 
 void CWallet::AvailableCoins(std::vector <COutput> &vCoins, std::map <std::string, std::vector<COutput>> &mapAssetCoins,
-                             bool fGetRTM, bool fOnlyAssets, bool fOnlySafe, const CCoinControl *coinControl,
+                             bool fGet405, bool fOnlyAssets, bool fOnlySafe, const CCoinControl *coinControl,
                              const CAmount &nMinimumAmount, const CAmount &nMaximumAmount,
                              const CAmount &nMinimumSumAmount, const uint64_t nMaximumCount, const int nMinDepth,
                              const int nMaxDepth) const {
@@ -3094,7 +3095,7 @@ void CWallet::AvailableCoins(std::vector <COutput> &vCoins, std::map <std::strin
     SmartnodeCollaterals collaterals = Params().GetConsensus().nCollaterals;
 
     CAmount nTotal = 0;
-    bool fRTMLimitHit = false;
+    bool frtmLimitHit = false;
 
     std::map <std::string, CAmount> mapAssetTotals;
     std::map <uint256, COutPoint> mapOutPoints;
@@ -3222,10 +3223,10 @@ void CWallet::AvailableCoins(std::vector <COutput> &vCoins, std::map <std::strin
                 }
             }
 
-            if (fGetRTM) {
-                if (fRTMLimitHit) // We hit our limit
+            if (fGet405) {
+                if (frtmLimitHit) // We hit our limit
                     continue;
-                // We only want RTM OutPoints. Don't include Asset OutPoints
+                // We only want 405 OutPoints. Don't include Asset OutPoints
                 if (isAssetScript)
                     continue;
 
@@ -3236,13 +3237,13 @@ void CWallet::AvailableCoins(std::vector <COutput> &vCoins, std::map <std::strin
                     nTotal += pcoin->tx->vout[i].nValue;
 
                     if (nTotal >= nMinimumSumAmount) {
-                        fRTMLimitHit = true;
+                        frtmLimitHit = true;
                     }
                 }
 
                 // Checks the maximum number of UTXO's.
                 if (nMaximumCount > 0 && vCoins.size() >= nMaximumCount) {
-                    fRTMLimitHit = true;
+                    frtmLimitHit = true;
                 }
             }
         }

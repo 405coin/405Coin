@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -32,7 +32,7 @@ namespace Consensus {
     };
 
 // Configures a LLMQ and its DKG
-// See https://github.com/raptoreum/dips/blob/master/dip-0006.md for more details
+// See https://github.com/405Coin/dips/blob/master/dip-0006.md for more details
     struct LLMQParams {
         LLMQType type;
 

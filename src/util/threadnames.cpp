@@ -1,10 +1,10 @@
 // Copyright (c) 2018-2022 The Bitcoin Core developers
-// Copyright (c)      2022 The Raptoreum developers
+// Copyright (c)      2022 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/raptoreum-config.h>
+#include <config/405Coin-config.h>
 #endif
 
 #include <string>
@@ -60,7 +60,7 @@ static void SetInternalName(std::string name) {}
 #endif
 
 void util::ThreadRename(std::string &&name) {
-    SetThreadName(("rtm-" + name).c_str());;
+    SetThreadName(("405-" + name).c_str());;
     SetInternalName(std::move(name));
 }
 

@@ -1,6 +1,7 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -146,9 +147,9 @@ namespace GUIUtil {
             {ThemedColor::BLUE,                    QColor(97, 123, 209)},
             {ThemedColor::GREEN,                   QColor(10, 173, 6)}, 
             {ThemedColor::ORANGE,                  QColor(235, 127, 0)},
-            {ThemedColor::PRIMARY,                 QColor(183, 68, 38)},
+            {ThemedColor::PRIMARY,                 QColor(64, 199, 196)},
             {ThemedColor::RED,                     QColor(243, 35, 73)},
-            {ThemedColor::SECONDARY,               QColor(194, 192, 192)},
+            {ThemedColor::SECONDARY,               QColor(166, 129, 214)},
     };
 
     static const std::map <ThemedColor, QColor> themedDarkColors = {
@@ -164,9 +165,9 @@ namespace GUIUtil {
             {ThemedColor::BLUE,                    QColor(171, 186, 237)},
             {ThemedColor::GREEN,                   QColor(10, 173, 6)},
             {ThemedColor::ORANGE,                  QColor(235, 127, 0)},
-            {ThemedColor::PRIMARY,                 QColor(180, 90, 70)},
+            {ThemedColor::PRIMARY,                 QColor(64, 199, 196)},
             {ThemedColor::RED,                     QColor(243, 35, 72)},
-            {ThemedColor::SECONDARY,               QColor(128, 134, 154)},
+            {ThemedColor::SECONDARY,               QColor(166, 129, 214)},
     };
 
     static const std::map <ThemedStyle, QString> themedStyles = {
@@ -174,7 +175,7 @@ namespace GUIUtil {
             {ThemedStyle::TS_ERROR,     "color:#F32349;"},
             {ThemedStyle::TS_SUCCESS,   "color:#56AA01;"},
             {ThemedStyle::TS_COMMAND,   "color:#617BD1;"},
-            {ThemedStyle::TS_PRIMARY,   "color:#555B70;"}, 
+            {ThemedStyle::TS_PRIMARY,   "color:#40c7c4;"},
             {ThemedStyle::TS_SECONDARY, "color:#c2c0c0;"}, 
     };
 
@@ -183,8 +184,8 @@ namespace GUIUtil {
             {ThemedStyle::TS_ERROR,     "color:#F32349;"},
             {ThemedStyle::TS_SUCCESS,   "color:#0AAD06;"},
             {ThemedStyle::TS_COMMAND,   "color:#ABBAED;"},
-            {ThemedStyle::TS_PRIMARY,   "color:#d2d0d0;"},
-            {ThemedStyle::TS_SECONDARY, "color:#80869A;"},
+            {ThemedStyle::TS_PRIMARY,   "color:#5de0dc;"},
+            {ThemedStyle::TS_SECONDARY, "color:#a781dd;"},
     };
 
     QColor getThemedQColor(ThemedColor color) {
@@ -268,7 +269,7 @@ namespace GUIUtil {
 
         // We don't want translators to use own addresses in translations
         // and this is the only place, where this address is supplied.
-        widget->setPlaceholderText(QObject::tr("Enter a Raptoreum address (e.g. %1)").arg(
+        widget->setPlaceholderText(QObject::tr("Enter a 405Coin address (e.g. %1)").arg(
                 QString::fromStdString(DummyAddress(Params()))));
         widget->setValidator(new BitcoinAddressEntryValidator(parent, fAllowURI));
         widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
@@ -281,7 +282,7 @@ namespace GUIUtil {
             QDialog dlg(parent);
             dlg.setObjectName("AppearanceSetup");
             dlg.setWindowTitle(QObject::tr("Appearance Setup"));
-            dlg.setWindowIcon(QIcon(":icons/raptoreum"));
+            dlg.setWindowIcon(QIcon(":icons/405Coin"));
             // And the widgets we add to it
             QLabel lblHeading(
                     QObject::tr("Please choose your preferred settings for the appearance of %1").arg(PACKAGE_NAME),
@@ -320,8 +321,8 @@ namespace GUIUtil {
     }
 
     bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out) {
-        // return if URI is not valid or is no raptoreum: URI
-        if (!uri.isValid() || uri.scheme() != QString("raptoreum"))
+        // return if URI is not valid or is no 405Coin: URI
+        if (!uri.isValid() || uri.scheme() != QString("405Coin"))
             return false;
 
         SendCoinsRecipient rv;
@@ -357,7 +358,7 @@ namespace GUIUtil {
                 fShouldReturnFalse = false;
             } else if (i->first == "amount") {
                 if (!i->second.isEmpty()) {
-                    if (!BitcoinUnits::parse(BitcoinUnits::RTM, i->second, &rv.amount)) {
+                    if (!BitcoinUnits::parse(BitcoinUnits::COIN, i->second, &rv.amount)) {
                         return false;
                     }
                 }
@@ -384,12 +385,12 @@ namespace GUIUtil {
     }
 
     QString formatBitcoinURI(const SendCoinsRecipient &info) {
-        QString ret = QString("raptoreum:%1").arg(info.address);
+        QString ret = QString("405Coin:%1").arg(info.address);
         int paramCount = 0;
 
         if (info.amount) {
             ret += QString("?amount=%1").arg(
-                    BitcoinUnits::format(BitcoinUnits::RTM, info.amount, false, BitcoinUnits::separatorNever));
+                    BitcoinUnits::format(BitcoinUnits::COIN, info.amount, false, BitcoinUnits::separatorNever));
             paramCount++;
         }
 
@@ -565,7 +566,7 @@ namespace GUIUtil {
     void openConfigfile() {
         fs::path pathConfig = GetConfigFile(gArgs.GetArg("-conf", BITCOIN_CONF_FILENAME));
 
-        /* Open raptoreum.conf with the associated application */
+        /* Open 405Coin.conf with the associated application */
         if (fs::exists(pathConfig))
             QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
     }
@@ -731,15 +732,15 @@ namespace GUIUtil {
     {
         std::string chain = gArgs.GetChainName();
         if (chain == CBaseChainParams::MAIN)
-            return GetSpecialFolderPath(CSIDL_STARTUP) / "Raptoreum Core.lnk";
+            return GetSpecialFolderPath(CSIDL_STARTUP) / "405Coin Core.lnk";
         if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-            return GetSpecialFolderPath(CSIDL_STARTUP) / "Raptoreum Core (testnet).lnk";
-        return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Raptoreum Core (%s).lnk", chain);
+            return GetSpecialFolderPath(CSIDL_STARTUP) / "405Coin Core (testnet).lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("405Coin Core (%s).lnk", chain);
     }
 
     bool GetStartOnSystemStartup()
     {
-        // check for "Raptoreum Core*.lnk"
+        // check for "405Coin Core*.lnk"
         return fs::exists(StartupShortcutPath());
     }
 
@@ -814,8 +815,8 @@ namespace GUIUtil {
     {
         std::string chain = gArgs.GetChainName();
         if (chain == CBaseChainParams::MAIN)
-            return GetAutostartDir() / "raptoreumcore.desktop";
-        return GetAutostartDir() / strprintf("raptoreumcore-%s.desktop", chain);
+            return GetAutostartDir() / "405Coincore.desktop";
+        return GetAutostartDir() / strprintf("405Coincore-%s.desktop", chain);
     }
 
     bool GetStartOnSystemStartup()
@@ -855,13 +856,13 @@ namespace GUIUtil {
             if (!optionFile.good())
                 return false;
             std::string chain = gArgs.GetChainName();
-            // Write a raptoreumcore.desktop file to the autostart directory:
+            // Write a 405Coincore.desktop file to the autostart directory:
             optionFile << "[Desktop Entry]\n";
             optionFile << "Type=Application\n";
             if (chain == CBaseChainParams::MAIN)
-                optionFile << "Name=Raptoreum Core\n";
+                optionFile << "Name=405Coin Core\n";
             else
-                optionFile << strprintf("Name=Raptoreum Core (%s)\n", chain);
+                optionFile << strprintf("Name=405Coin Core (%s)\n", chain);
             optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", gArgs.GetBoolArg("-testnet", false), gArgs.GetBoolArg("-regtest", false));
             optionFile << "Terminal=false\n";
             optionFile << "Hidden=false\n";
@@ -997,7 +998,7 @@ namespace GUIUtil {
 
             std::vector <QString> vecFiles;
             // If light/dark theme is used load general styles first
-            if (raptoreumThemeActive()) {
+            if (Is405CoinThemeActive()) {
                 vecFiles.push_back(pathToFile(generalTheme));
             }
             vecFiles.push_back(pathToFile(getActiveTheme()));
@@ -1623,7 +1624,7 @@ namespace GUIUtil {
         return theme;
     }
 
-    bool raptoreumThemeActive() {
+    bool Is405CoinThemeActive() {
         QSettings settings;
         QString theme = settings.value("theme", defaultTheme).toString();
         return theme != traditionalTheme;
@@ -1639,7 +1640,7 @@ namespace GUIUtil {
 #ifdef Q_OS_MAC
         for (const auto& c : w->findChildren<QWidget*>()) {
             if (c->testAttribute(Qt::WA_MacShowFocusRect)) {
-                c->setAttribute(Qt::WA_MacShowFocusRect, !raptoreumThemeActive());
+                c->setAttribute(Qt::WA_MacShowFocusRect, !Is405CoinThemeActive());
                 setRectsDisabled.emplace(c);
             }
         }
@@ -1652,7 +1653,7 @@ namespace GUIUtil {
         auto it = setRectsDisabled.begin();
         while (it != setRectsDisabled.end()) {
             if (allWidgets.contains(*it)) {
-                (*it)->setAttribute(Qt::WA_MacShowFocusRect, !raptoreumThemeActive());
+                (*it)->setAttribute(Qt::WA_MacShowFocusRect, !Is405CoinThemeActive());
                 ++it;
             } else {
                 it = setRectsDisabled.erase(it);

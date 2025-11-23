@@ -5,7 +5,7 @@
 """Test wallet import RPCs.
 
 Test rescan behavior of importaddress, importpubkey, importprivkey, and
-importmulti RPCs with different types of keys and rescan options.
+impo405ulti RPCs with different types of keys and rescan options.
 
 In the first part of the test, node 0 creates an address for each type of
 import RPC call and sends BTC to it. Then other nodes import the addresses,
@@ -55,7 +55,7 @@ class Variant(collections.namedtuple("Variant", "call data rescan prune")):
             assert_equal(response, None)
 
         elif self.call in (Call.multiaddress, Call.multiscript):
-            response = self.node.importmulti([{
+            response = self.node.impo405ulti([{
                 "scriptPubKey": {
                     "address": self.address["address"]
                 } if self.call == Call.multiaddress else self.address["scriptPubKey"],
@@ -128,7 +128,7 @@ class ImportRescanTest(BitcoinTestFramework):
         extra_args = [[] for _ in range(self.num_nodes)]
         for i, import_node in enumerate(IMPORT_NODES, 2):
             if import_node.prune:
-                # txindex is enabled by default in Raptoreum and needs to be disabled for import-rescan.py
+                # txindex is enabled by default in 405Coin and needs to be disabled for import-rescan.py
                 extra_args[i] += ["-prune=1", "-txindex=0", "-reindex"]
 
         self.add_nodes(self.num_nodes, extra_args=extra_args, stderr=sys.stdout)

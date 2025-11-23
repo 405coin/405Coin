@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -94,9 +94,9 @@ CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::string &devNet
  */
 static CBlock
 CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount &genesisReward) {
-    const char *pszTimestamp = "The Times 22/Jan/2018 Raptoreum is name of the game for new generation of firms";
+    const char *pszTimestamp = "Error 405: Profit Not Found - but the memes were priceless";
     const CScript genesisOutputScript = CScript() << ParseHex(
-            "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9")
+            "04a0ce42f7d39022ab7a2c1d8418f2ad1960f70f9137bac9d0f74d2a3c0b15c567a15d096b4fd1f8b98a90b6a0c7ad719f8d92be7c3c00759222af1abcf4f5976dd9da2bf0fd6a94ae8eac893667d4480b41eaf9c572cca5f8d7b3cc3dba938c")
                                                   << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -168,7 +168,10 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = CBaseChainParams::MAIN;
-        consensus.nSubsidyHalvingInterval = 210240; // Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
+        consensus.nSubsidyHalvingInterval = 1051200; // ~4 years at 2-minute blocks
+        consensus.nInitialSubsidy = 1927 * COIN;
+        consensus.nPremineSubsidy = 20000000 * COIN;
+        consensus.nPremineHeight = 1;
         consensus.nSmartnodePaymentsStartBlock = 5761; //
         consensus.nSmartnodePaymentsIncreaseBlock = 158000; // actual historical value
         consensus.nSmartnodePaymentsIncreasePeriod = 576 * 30; // 17280 - actual historical value
@@ -194,8 +197,8 @@ public:
         // consensus.DIP0003EnforcementHeight = 1047200;
         consensus.powLimit = uint256S(
                 "00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Raptoreum: 1 day
-        consensus.nPowTargetSpacing = 2 * 60; // Raptoreum: 2 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // 405Coin: 1 day
+        consensus.nPowTargetSpacing = 2 * 60; // 405Coin: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 60;
@@ -224,49 +227,47 @@ public:
         );
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S(
-                "000000000000000000000000000000000000000000000000000eead474ccbc59"); // block 421457 chainwork
+        consensus.nMinimumChainWork = uint256S("0x0");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S(
-                "ox6fb0b649723f51b67484019409fef94d077f17c8d88645e08c000b2e4fd3e28a"); // block hash for 421457
+        consensus.defaultAssumeValid = uint256S("0x0");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x72;//r
-        pchMessageStart[1] = 0x74;//t
-        pchMessageStart[2] = 0x6d;//m
-        pchMessageStart[3] = 0x2e;//.
+        pchMessageStart[0] = 0x34; // '4'
+        pchMessageStart[1] = 0x30; // '0'
+        pchMessageStart[2] = 0x35; // '5'
+        pchMessageStart[3] = 0x4d; // 'M'
         nDefaultPort = 10226;
         nPruneAfterHeight = 100000;
         m_assumed_blockchain_size = 7;
         m_assumed_chain_state_size = 2;
-        //FindMainNetGenesisBlock(1614369600, 0x20001fff, "main");
-        genesis = CreateGenesisBlock(1614369600, 1130, 0x20001fff, 4, 5000 * COIN);
+        //FindMainNetGenesisBlock(1762628736, 0x20001fff, "main");
+        genesis = CreateGenesisBlock(1762628736, 7958, 0x20001fff, 4, 5000 * COIN);
         VerifyGenesisPOW(genesis);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock ==
-               uint256S("0xb79e5df07278b9567ada8fc655ffbfa9d3f586dc38da3dd93053686f41caeea0"));
+               uint256S("0xcdd77255d68edd62e7e41ba53f044976a57f396fdb1b4b4486f304d27e8d57d0"));
         assert(genesis.hashMerkleRoot ==
-               uint256S("0x87a48bc22468acdd72ee540aab7c086a5bbcddc12b51c6ac925717a74c269453"));
+               uint256S("0x7a4b1fc5aa80ec3f2bf6edb718b713230186c13ff16363dc4a554485e9465023"));
 
-        vSeeds.emplace_back("lbdn.raptoreum.com");
-        vSeeds.emplace_back("51.89.21.112");
+        vSeeds.emplace_back("mn01.405.mn");
+        vSeeds.emplace_back("mn02.405.mn");
 
-        // Raptoreum addresses start with 'r'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 60);
-        // Raptoreum script addresses start with '7'
+        // 405Coin addresses start with '4o5'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>{0x7B, 0xEA};
+        // 405Coin script addresses start with '7'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 16);
-        // Raptoreum private keys start with '7' or 'X'
+        // 405Coin private keys start with '7' or 'X'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 128);
-        // Raptoreum BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
+        // 405Coin BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
-        // Raptoreum BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
+        // 405Coin BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
-        // Raptoreum BIP44 coin type is '5'
+        // 405Coin BIP44 coin type is '5'
         std::string strExtCoinType = gArgs.GetArg("-extcoinindex", "");
         nExtCoinType = strExtCoinType.empty() ? 200 : std::stoi(strExtCoinType);
 //        if(gArgs.GetChainName() == CBaseChainParams::MAIN) {
@@ -276,13 +277,12 @@ public:
         std::vector <FounderRewardStructure> rewardStructures = {{INT_MAX, 5}};// 5% founder/dev fee forever
         consensus.nFounderPayment = FounderPayment(rewardStructures, 250);
         consensus.nCollaterals = SmartnodeCollaterals(
-                {{88720,   600000 * COIN},
-                 {132720,  800000 * COIN},
-                 {176720,  1000000 * COIN},
-                 {220720,  1250000 * COIN},
-                 {264720,  1500000 * COIN},
-                 {INT_MAX, 1800000 * COIN}
-                },
+                {{88720,   110000 * COIN},
+                 {132720,  150000 * COIN},
+                 {176720,  190000 * COIN},
+                 {220720,  240000 * COIN},
+                 {264720,  280000 * COIN},
+                 {INT_MAX, 350000 * COIN}},
                 {{5761,    0},
                  {INT_MAX, 20}}
         );
@@ -313,24 +313,16 @@ public:
         nPoolMaxParticipants = 20;
         nFulfilledRequestExpireTime = 60 * 60; // fulfilled requests expire in 1 hour
 
-        vSporkAddresses = {"RWGvGpd3yJdnfh9ziyHNDEoHMJBvnZ23zK"};
+        vSporkAddresses = {"4o5WadAnGCypB61cd97LJqGpuPsME85KDL2s"};
         nMinSporkKeys = 1;
         fBIP9CheckSmartnodesUpgraded = true;
 
-        checkpointData = {
-                {{5145, uint256S("0x64c9cc82f05f4326e49fd4b21a48494b02b12a707de67a47c7e8e1102b0f1d9b")},
-                 {35000, uint256S("0xb4fb191f3ef4141557aef8aafa700d312e5499cbde4a3079faa78cf58c0c414f")},
-                 {61900, uint256S("0xc146fc6244fe4d71559f4fef16a386f1fceda6e5efa3da3ca1ebe9806cc8f25c")},
-                 {394273, uint256S("0dc274a28864a01a9539e60afdbc38fcdb0f000fbc52553cd31651c97557dc04")}
-
-                }
-        };
+        checkpointData = {};
 
         chainTxData = ChainTxData{
-                1662608883,   // * UNIX timestamp of last known number of transactions (Block 0)
-                2091922,   // * total number of transactions between genesis and that timestamp
-                //   (the tx=... number in the SetBestChain debug.log lines)
-                0.06    // * estimated number of transactions per second after that timestamp
+                static_cast<int64_t>(genesis.nTime),
+                0,
+                0.0
         };
     }
 };
@@ -343,6 +335,9 @@ public:
     CTestNetParams() {
         strNetworkID = CBaseChainParams::TESTNET;
         consensus.nSubsidyHalvingInterval = 210240;
+        consensus.nInitialSubsidy = 1000 * COIN;
+        consensus.nPremineSubsidy = 0;
+        consensus.nPremineHeight = 0;
         consensus.nSmartnodePaymentsStartBlock = 1000; // not true, but it's ok as long as it's less then nSmartnodePaymentsIncreaseBlock
         consensus.nSmartnodePaymentsIncreaseBlock = 4030;
         consensus.nSmartnodePaymentsIncreasePeriod = 10;
@@ -368,8 +363,8 @@ public:
         // consensus.DIP0003EnforcementHeight = 7300;
         consensus.powLimit = uint256S(
                 "00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Raptoreum: 1 day
-        consensus.nPowTargetSpacing = 60; // Raptoreum: 1 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // 405Coin: 1 day
+        consensus.nPowTargetSpacing = 60; // 405Coin: 1 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 60;
@@ -413,20 +408,20 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x0"); // 0
 
-        pchMessageStart[0] = 0x74; //t
-        pchMessageStart[1] = 0x72; //r
-        pchMessageStart[2] = 0x74; //t
-        pchMessageStart[3] = 0x6d; //m
+        pchMessageStart[0] = 0x34; // '4'
+        pchMessageStart[1] = 0x30; // '0'
+        pchMessageStart[2] = 0x35; // '5'
+        pchMessageStart[3] = 0x54; // 'T'
         nDefaultPort = 10230;
         nPruneAfterHeight = 1000;
-        genesis = CreateGenesisBlock(1711078237, 971, 0x20001fff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1762629036, 1713, 0x20001fff, 4, 5000 * COIN);
         VerifyGenesisPOW(genesis);
 
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock ==
-               uint256S("0xbbab22066081d3b466abd734de914e8092abf4e959bcd0fff978297c41591b23"));
+               uint256S("0xf814306e55fbf69d7435940bdef6c3fc5a4838d32444524fbf3d079b0d65449d"));
         assert(genesis.hashMerkleRoot ==
-               uint256S("0x87a48bc22468acdd72ee540aab7c086a5bbcddc12b51c6ac925717a74c269453"));
+               uint256S("0x7a4b1fc5aa80ec3f2bf6edb718b713230186c13ff16363dc4a554485e9465023"));
 
         vFixedSeeds.clear();
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -434,20 +429,20 @@ public:
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
         vSeeds.emplace_back("47.151.9.131");
-        vSeeds.emplace_back("lbtn.raptoreum.com");
+        vSeeds.emplace_back("lbtn.405Coin.com");
 
-        // Testnet Raptoreum addresses start with 'r'
+        // Testnet 405Coin addresses start with 'r'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 123);
-        // Testnet Raptoreum script addresses start with '8' or '9'
+        // Testnet 405Coin script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);
-        // Testnet Raptoreum BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet 405Coin BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Testnet Raptoreum BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet 405Coin BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Testnet Raptoreum BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet 405Coin BIP44 coin type is '1' (All coin's testnet default)
         std::string strExtCoinType = gArgs.GetArg("-extcoinindex", "");
         nExtCoinType = strExtCoinType.empty() ? 10227 : std::stoi(strExtCoinType);
 
@@ -489,16 +484,12 @@ public:
         nMinSporkKeys = 1;
         fBIP9CheckSmartnodesUpgraded = true;
 
-        checkpointData = {
-                {
-
-                }
-        };
+        checkpointData = {};
 
         chainTxData = ChainTxData{
-                1712153599, // * UNIX timestamp of last known number of transactions (Block 17670)
-                22643,    // * total number of transactions between genesis and that timestamp
-                0.02108492915974094        // * estimated number of transactions per second after that timestamp
+                static_cast<int64_t>(genesis.nTime),
+                0,
+                0.0
         };
 
     }
@@ -512,6 +503,9 @@ public:
     explicit CDevNetParams(const ArgsManager &args) {
         strNetworkID = CBaseChainParams::DEVNET;
         consensus.nSubsidyHalvingInterval = 210240;
+        consensus.nInitialSubsidy = 1000 * COIN;
+        consensus.nPremineSubsidy = 0;
+        consensus.nPremineHeight = 0;
         consensus.nSmartnodePaymentsStartBlock = 4010; // not true, but it's ok as long as it's less then nSmartnodePaymentsIncreaseBlock
         consensus.nSmartnodePaymentsIncreaseBlock = 4030;
         consensus.nSmartnodePaymentsIncreasePeriod = 10;
@@ -537,8 +531,8 @@ public:
         // consensus.DIP0003EnforcementHeight = 2; // DIP0003 activated immediately on devnet
         consensus.powLimit = uint256S(
                 "7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Raptoreum: 1 day
-        consensus.nPowTargetSpacing = 2 * 60; // Raptoreum: 2 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // 405Coin: 1 day
+        consensus.nPowTargetSpacing = 2 * 60; // 405Coin: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 60;
@@ -564,24 +558,26 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x000000000000000000000000000000000000000000000000000000000000000");
 
-        pchMessageStart[0] = 0xe2;
-        pchMessageStart[1] = 0xca;
-        pchMessageStart[2] = 0xff;
-        pchMessageStart[3] = 0xce;
+        pchMessageStart[0] = 0x34; // '4'
+        pchMessageStart[1] = 0x30; // '0'
+        pchMessageStart[2] = 0x35; // '5'
+        pchMessageStart[3] = 0x44; // 'D'
         nDefaultPort = 19799;
         nPruneAfterHeight = 1000;
         m_assumed_blockchain_size = 0;
         m_assumed_chain_state_size = 0;
 
         UpdateDevnetSubsidyAndDiffParametersFromArgs(args);
-        genesis = CreateGenesisBlock(1688535726, 2841, 0x20001fff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1762629336, 2841, 0x20001fff, 4, 5000 * COIN);
         VerifyGenesisPOW(genesis);
         consensus.hashGenesisBlock = genesis.GetHash();
 //      std::cout << "hash: " << consensus.hashGenesisBlock.ToString() << std::endl;
         assert(consensus.hashGenesisBlock ==
                uint256S("0x6d195b5563f3fea862d1ad151f3de7e568bb139ea3d8ee68b398580e493a504c"));
         assert(genesis.hashMerkleRoot ==
-               uint256S("0xe87a48bc22468acdd72ee540aab7c086a5bbcddc12b51c6ac925717a74c269453"));
+               uint256S("0x7a4b1fc5aa80ec3f2bf6edb718b713230186c13ff16363dc4a554485e9465023"));
+        devnetGenesis = FindDevNetGenesisBlock(genesis, 5000 * COIN);
+        consensus.hashDevnetGenesisBlock = devnetGenesis.GetHash();
 
         consensus.nFutureRewardShare = Consensus::FutureRewardShare(0.8, 0.2, 0.0);
 
@@ -594,20 +590,20 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         vSeeds.emplace_back("47.151.26.43");
-        //vSeeds.push_back(CDNSSeedData("raptoreumevo.org",  "devnet-seed.raptoreumevo.org"));
+        //vSeeds.push_back(CDNSSeedData("405Coinevo.org",  "devnet-seed.405Coinevo.org"));
 
-        // Testnet Raptoreum addresses start with 'y'
+        // Testnet 405Coin addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 140);
-        // Testnet Raptoreum script addresses start with '8' or '9'
+        // Testnet 405Coin script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);
-        // Testnet Raptoreum BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet 405Coin BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Testnet Raptoreum BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet 405Coin BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Testnet Raptoreum BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet 405Coin BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params
@@ -642,14 +638,12 @@ public:
         // devnets are started with no blocks and no MN, so we can't check for upgraded MN (as there are none)
         fBIP9CheckSmartnodesUpgraded = false;
 
-        checkpointData = (CCheckpointData) {
-                {
-                        {0, uint256S("0x6d195b5563f3fea862d1ad151f3de7e568bb139ea3d8ee68b398580e493a504c")},
-                }
-        };
+        checkpointData = {};
 
         chainTxData = ChainTxData{
-
+                static_cast<int64_t>(genesis.nTime),
+                0,
+                0.0
         };
     }
 
@@ -683,6 +677,9 @@ public:
     explicit CRegTestParams(const ArgsManager &args) {
         strNetworkID = CBaseChainParams::REGTEST;
         consensus.nSubsidyHalvingInterval = 150;
+        consensus.nInitialSubsidy = 50 * COIN;
+        consensus.nPremineSubsidy = 0;
+        consensus.nPremineHeight = 0;
         consensus.nSmartnodePaymentsStartBlock = 240;
         consensus.nSmartnodePaymentsIncreaseBlock = 350;
         consensus.nSmartnodePaymentsIncreasePeriod = 10;
@@ -708,8 +705,8 @@ public:
         // consensus.DIP0003EnforcementHeight = 500;
         consensus.powLimit = uint256S(
                 "7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Raptoreum: 1 day
-        consensus.nPowTargetSpacing = 2 * 60; // Raptoreum: 2 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // 405Coin: 1 day
+        consensus.nPowTargetSpacing = 2 * 60; // 405Coin: 2 minutes
         consensus.nMinimumDifficultyBlocks = 2000;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
@@ -741,10 +738,10 @@ public:
                 {{240,     0},
                  {INT_MAX, 20}});
 
-        pchMessageStart[0] = 0xfc;
-        pchMessageStart[1] = 0xc1;
-        pchMessageStart[2] = 0xb7;
-        pchMessageStart[3] = 0xdc;
+        pchMessageStart[0] = 0x34; // '4'
+        pchMessageStart[1] = 0x30; // '0'
+        pchMessageStart[2] = 0x35; // '5'
+        pchMessageStart[3] = 0x52; // 'R'
         nDefaultPort = 19899;
         nPruneAfterHeight = 1000;
         m_assumed_blockchain_size = 0;
@@ -753,13 +750,13 @@ public:
         // UpdateVersionBitsParametersFromArgs(args);
         UpdateBudgetParametersFromArgs(args);
 
-        genesis = CreateGenesisBlock(1614369600, 2, 0x207fffff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1762629636, 4, 0x207fffff, 4, 5000 * COIN);
         VerifyGenesisPOW(genesis);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock ==
-               uint256S("0x485491468e03c8ac23dd38f70fc1cda9f98cbd0bf58945e2da6c94c2a2d8b044"));
+               uint256S("0x94661a75e2cbfb0c1a829b1126548f9090afd27e64438d50a5612496f86ae200"));
         assert(genesis.hashMerkleRoot ==
-               uint256S("0x87a48bc22468acdd72ee540aab7c086a5bbcddc12b51c6ac925717a74c269453"));
+               uint256S("0x7a4b1fc5aa80ec3f2bf6edb718b713230186c13ff16363dc4a554485e9465023"));
         consensus.nFutureRewardShare = Consensus::FutureRewardShare(0.8, 0.2, 0.0);
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
@@ -788,30 +785,26 @@ public:
         std::vector <FounderRewardStructure> rewardStructures = {{INT_MAX, 5}};// 5% founder/dev fee forever
         consensus.nFounderPayment = FounderPayment(rewardStructures, 500, "yaackz5YDLnFuuX6gGzEs9EMRQGfqmNYjc");
 
-        checkpointData = {
-                {
-                        {0, uint256S("b79e5df07278b9567ada8fc655ffbfa9d3f586dc38da3dd93053686f41caeea0")},
-                }
-        };
+        checkpointData = {};
 
         chainTxData = ChainTxData{
+                static_cast<int64_t>(genesis.nTime),
                 0,
-                0,
-                0
+                0.0
         };
 
-        // Regtest Raptoreum addresses start with 'y'
+        // Regtest 405Coin addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 140);
-        // Regtest Raptoreum script addresses start with '8' or '9'
+        // Regtest 405Coin script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
         // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);
-        // Regtest Raptoreum BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Regtest 405Coin BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Regtest Raptoreum BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Regtest 405Coin BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Regtest Raptoreum BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest 405Coin BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params

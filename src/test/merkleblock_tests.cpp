@@ -4,7 +4,7 @@
 
 #include <merkleblock.h>
 #include <uint256.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <boost/test/unit_test.hpp>
 

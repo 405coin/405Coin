@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -29,9 +29,9 @@ void CAssetTransfer::BuildAssetTransaction(CScript &script) const {
     CDataStream AssetTransfer(SER_NETWORK, PROTOCOL_VERSION);
     AssetTransfer << *this;
     std::vector<unsigned char> vchMessage;
-    vchMessage.push_back(RTM_R); // r
-    vchMessage.push_back(RTM_T); // t
-    vchMessage.push_back(RTM_M); // m
+    vchMessage.push_back(COIN_R); // r
+    vchMessage.push_back(COIN_T); // t
+    vchMessage.push_back(COIN_M); // m
     vchMessage.insert(vchMessage.end(), AssetTransfer.begin(), AssetTransfer.end());
     script << OP_ASSET_ID << ToByteVector(vchMessage) << OP_DROP;
 }

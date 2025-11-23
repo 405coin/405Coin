@@ -1,9 +1,9 @@
 // Copyright (c) 2018-2019 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <base58.h>
 #include <chainparams.h>

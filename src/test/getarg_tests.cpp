@@ -4,7 +4,7 @@
 
 #include <util/strencodings.h>
 #include <util/system.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <string>
 #include <utility>
@@ -22,7 +22,7 @@ static void ResetArgs(const std::string &strArg) {
         boost::split(vecArg, strArg, IsSpace, boost::token_compress_on);
 
     // Insert dummy executable name:
-    vecArg.insert(vecArg.begin(), "testraptoreum");
+    vecArg.insert(vecArg.begin(), "testrtmCoin");
 
     // Convert to char*:
     std::vector<const char *> vecChar;

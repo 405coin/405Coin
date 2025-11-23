@@ -41,7 +41,7 @@ struct CMempoolAddressDeltaKey {
     CMempoolAddressDeltaKey(int addressType, uint160 addressHash, uint256 hash, unsigned int i, int s) {
         type = addressType;
         addressBytes = addressHash;
-        asset = "RTM";
+        asset = "405";
         txhash = hash;
         index = i;
         spending = s;

@@ -1,5 +1,6 @@
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -41,13 +42,13 @@ static void smartnode_list_help(const JSONRPCRequest &request) {
                "  json           - Print info in JSON format (can be additionally filtered, partial match)\n"
                "  lastpaidblock  - Print the last block height a node was paid on the network\n"
                "  lastpaidtime   - Print the last time a node was paid on the network\n"
-               "  owneraddress   - Print the smartnode owner Raptoreum address\n"
-               "  payee          - Print the smartnode payout Raptoreum address (can be additionally filtered,\n"
+               "  owneraddress   - Print the smartnode owner 405Coin address\n"
+               "  payee          - Print the smartnode payout 405Coin address (can be additionally filtered,\n"
                "                   partial match)\n"
                "  pubKeyOperator - Print the smartnode operator public key\n"
                "  status         - Print smartnode status: ENABLED / POSE_BANNED\n"
                "                   (can be additionally filtered, partial match)\n"
-               "  votingaddress  - Print the smartnode voting Raptoreum address\n",
+               "  votingaddress  - Print the smartnode voting 405Coin address\n",
                {
                        {"mode", RPCArg::Type::STR, /* default */ "json", "The mode to run list in"},
                        {"filter", RPCArg::Type::STR, /* default */ "",
@@ -689,8 +690,8 @@ static UniValue smartnodelist(const JSONRPCRequest &request) {
 static const CRPCCommand commands[] =
         { //  category              name                      actor (function)         argNames
                 //  --------------------- ------------------------  -----------------------  ----------
-                {"raptoreum", "smartnode",     &smartnode, {}},
-                {"raptoreum", "smartnodelist", &smartnode, {}},
+                {"405Coin", "smartnode",     &smartnode, {}},
+                {"405Coin", "smartnodelist", &smartnode, {}},
         };
 
 void RegisterSmartnodeRPCCommands(CRPCTable &t) {

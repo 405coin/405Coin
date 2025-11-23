@@ -1,6 +1,7 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -743,7 +744,7 @@ void CreateAssetsDialog::CoinControlChangeEdited(const QString &text) {
             ui->labelCoinControlChangeLabel->setText("");
         } else if (!IsValidDestination(dest)) // Invalid address
         {
-            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Raptoreum address"));
+            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid 405Coin address"));
         } else // Valid address
         {
             if (!model->wallet().isSpendable(dest)) {

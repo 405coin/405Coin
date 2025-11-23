@@ -2,6 +2,7 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -183,7 +184,7 @@ static RPCHelpMan stop() {
             // Also accept the hidden 'wait' integer argument (milliseconds)
             // For instance, 'stop 1000' makes the call wait 1 second before returning
             // to the client (intended for testing)
-                      "\nStop Raptoreum Core server.",
+                      "\nStop 405Coin Core server.",
                       {
                               {"wait", RPCArg::Type::NUM, RPCArg::Optional::OMITTED_NAMED_ARG, "how long to wait in ms",
                                "", {}, /* hidden */ true},

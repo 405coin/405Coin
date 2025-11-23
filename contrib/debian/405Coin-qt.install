@@ -1,0 +1,6 @@
+usr/local/bin/405Coin-qt usr/bin
+share/pixmaps/405Coin32.xpm usr/share/pixmaps
+share/pixmaps/405Coin16.xpm usr/share/pixmaps
+share/pixmaps/405Coin128.png usr/share/pixmaps
+debian/405Coin-qt.desktop usr/share/applications
+debian/405Coin-qt.protocol usr/share/kde4/services/

@@ -16,7 +16,7 @@
 #include <node/context.h>
 #include <policy/policy.h>
 #include <rpc/server.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <util/ref.h>
 #include <validation.h>
 #include <wallet/coincontrol.h>
@@ -347,7 +347,7 @@ write(),
                   "timestamp %d. There was an error reading a block from time %d, which is after or within %d "
                   "seconds of key creation, and could contain transactions pertaining to the key. As a result, "
                   "transactions and coins using this key may not appear in the wallet. This error could be caused "
-                  "by pruning or data corruption (see raptoreumd log for details) and could be dealt with by "
+                  "by pruning or data corruption (see 405Coind log for details) and could be dealt with by "
                   "downloading and rescanning the relevant blocks (see -reindex and -rescan "
                   "options).\"}},{\"success\":true}]",
                   0, oldTip->GetBlockTimeMax(), TIMESTAMP_WINDOW)

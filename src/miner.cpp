@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -50,7 +50,7 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// RaptoreumMiner
+// Coin405Miner
 //
 
 //
@@ -550,10 +550,10 @@ static bool ProcessBlockFound(const CBlock *pblock, const CChainParams &chainpar
     return true;
 }
 
-void static RaptoreumMiner(const CChainParams& chainparams, NodeContext& node) {
-    LogPrintf("RaptoreumMiner -- started\n");
+void static Coin405Miner(const CChainParams& chainparams, NodeContext& node) {
+    LogPrintf("Coin405Miner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    util::ThreadRename("raptoreum-miner");
+    util::ThreadRename("405Coin-miner");
 
     unsigned int nExtraNonce = 0;
 
@@ -564,7 +564,7 @@ void static RaptoreumMiner(const CChainParams& chainparams, NodeContext& node) {
 
   		  // TODO: either add this function back in, or update this for more appropriate wallet functionality
         // if (!EnsureWalletIsAvailable(pWallet, false)) {
-        //     LogPrintf("RaptoreumMiner -- Wallet not available\n");
+        //     LogPrintf("Coin405Miner -- Wallet not available\n");
         // }
     #endif
 
@@ -621,7 +621,7 @@ void static RaptoreumMiner(const CChainParams& chainparams, NodeContext& node) {
 
             if (!pblocktemplate.get()) {
                 LogPrintf(
-                        "RaptoreumMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                        "Coin405Miner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
@@ -632,7 +632,7 @@ void static RaptoreumMiner(const CChainParams& chainparams, NodeContext& node) {
             LogPrintf("Algos: %s\n", hashSelection.getHashSelectionString());
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("RaptoreumMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("Coin405Miner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                       ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -647,7 +647,7 @@ void static RaptoreumMiner(const CChainParams& chainparams, NodeContext& node) {
                     if (UintToArith256(hash) <= hashTarget) {
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("RaptoreumMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(),
+                        LogPrintf("Coin405Miner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(),
                                   hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams, hash, node);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
@@ -664,7 +664,7 @@ void static RaptoreumMiner(const CChainParams& chainparams, NodeContext& node) {
                     if (nHashesDone % 1000 == 0) {   //Calculate hashing speed
                         nHashesPerSec = nHashesDone / (((GetTimeMicros() - nMiningTimeStart) / 1000000.00) + 1);
                         LogPrintf("nNonce: %d, hashRate %f\n", pblock->nNonce, nHashesPerSec);
-                        //LogPrintf("RaptoreumMiner:\n  proof-of-work in progress \n  hash: %s\n  target: %s\n, different=%s\n", hash.GetHex(), hashTarget.GetHex(), (UintToArith256(hash) - hashTarget));
+                        //LogPrintf("Coin405Miner:\n  proof-of-work in progress \n  hash: %s\n  target: %s\n, different=%s\n", hash.GetHex(), hashTarget.GetHex(), (UintToArith256(hash) - hashTarget));
                     }
                     if ((pblock->nNonce & 0xFF) == 0)
                         break;
@@ -694,17 +694,17 @@ void static RaptoreumMiner(const CChainParams& chainparams, NodeContext& node) {
         }
     }
     catch (const boost::thread_interrupted &) {
-        LogPrintf("RaptoreumMiner -- terminated\n");
+        LogPrintf("Coin405Miner -- terminated\n");
         throw;
     }
     catch (const std::runtime_error &e) {
-        LogPrintf("RaptoreumMiner -- runtime error: %s\n", e.what());
+        LogPrintf("Coin405Miner -- runtime error: %s\n", e.what());
         return;
     }
 }
 
 // TODO: add reference node, get the conn man from there
-int GenerateRaptoreums(bool fGenerate, int nThreads, const CChainParams &chainparams, NodeContext &node) {
+int Generate405Coins(bool fGenerate, int nThreads, const CChainParams &chainparams, NodeContext &node) {
     static boost::thread_group *minerThreads = NULL;
 
     int numCores = GetNumCores();
@@ -730,7 +730,7 @@ int GenerateRaptoreums(bool fGenerate, int nThreads, const CChainParams &chainpa
 
     for (int i = 0; i < nThreads; i++) {
         minerThreads->create_thread(
-                boost::bind(&RaptoreumMiner, boost::cref(chainparams), boost::ref(node)));
+                boost::bind(&Coin405Miner, boost::cref(chainparams), boost::ref(node)));
     }
     return (numCores);
 }

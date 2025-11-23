@@ -7,7 +7,7 @@
 #include <consensus/validation.h>
 #include <random.h>
 #include <sync.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <uint256.h>
 #include <validation.h>
 #include <validationinterface.h>

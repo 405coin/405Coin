@@ -2,6 +2,7 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -68,7 +69,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "Raptoreum Core cannot be compiled without assertions."
+# error "405Coin Core cannot be compiled without assertions."
 #endif
 
 #define MICRO 0.000001
@@ -650,7 +651,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams &chainparams, CTxMemPool
         for (const CTxIn &txin: tx.vin) {
             const CTransaction *ptxConflicting = pool.GetConflictTx(txin.prevout);
             if (ptxConflicting) {
-                // Transaction conflicts with mempool and RBF doesn't exist in Raptoreum
+                // Transaction conflicts with mempool and RBF doesn't exist in 405Coin
                 return state.Invalid(false, REJECT_DUPLICATE, "txn-mempool-conflict");
             }
         }
@@ -1085,44 +1086,29 @@ NOTE:   unlike bitcoin we are using PREVIOUS block height here,
 */
 CAmount
 GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params &consensusParams, bool fSuperblockPartOnly) {
-    // if (Params().NetworkIDString() == "main") {
-    //     std::cout << "This is Testnet only build" << endl;
-    //     exit(1);
-    // }
-    double nSubsidy = 5000;      // (declaring the reward variable and its original/default amount)
-    const short owlings = 21262; // amount of blocks between 2 owlings
-    int multiplier;              // integer number of owlings
-    int tempHeight;              // number of blocks since last anchor
-    if (nPrevHeight < 720) {
-        nSubsidy = Params().NetworkIDString() == CBaseChainParams::TESTNET ? 20000 : 4;
-    } else if ((nPrevHeight > 553531) && (nPrevHeight < 2105657)) {
-        tempHeight = nPrevHeight - 553532;
-        multiplier = tempHeight / owlings;
-        nSubsidy -= (multiplier * 10 + 10);
-    } else if ((nPrevHeight >= 2105657) && (nPrevHeight < 5273695)) {
-        tempHeight = nPrevHeight - 2105657;
-        multiplier = tempHeight / owlings;
-        nSubsidy -= (multiplier * 20 + 750);
-    } else if ((nPrevHeight >= 5273695) && (nPrevHeight < 7378633)) {
-        tempHeight = nPrevHeight - 5273695;
-        multiplier = tempHeight / owlings;
-        nSubsidy -= (multiplier * 10 + 3720);
-    } else if ((nPrevHeight >= 7378633) && (nPrevHeight < 8399209)) {
-        tempHeight = nPrevHeight - 7378633;
-        multiplier = tempHeight / owlings;
-        nSubsidy -= (multiplier * 5 + 4705);
-    } else if ((nPrevHeight >= 8399209) && (nPrevHeight < 14735285)) {
-        nSubsidy = 55;
-    } else if ((nPrevHeight >= 14735285) && (nPrevHeight < 15798385)) {
-        tempHeight = nPrevHeight - 14735285;
-        multiplier = tempHeight / owlings;
-        nSubsidy -= (multiplier + 4946);
-    } else if ((nPrevHeight >= 15798385) && (nPrevHeight < 25844304)) {
-        nSubsidy = 5;
-    } else if (nPrevHeight >= 25844304) {
-        nSubsidy = 0.001;
+    int nHeight = nPrevHeight + 1;
+    if (nHeight < 0) {
+        nHeight = 0;
     }
-    return nSubsidy * COIN;
+
+    if (consensusParams.nPremineSubsidy > 0 &&
+        consensusParams.nPremineHeight > 0 &&
+        nHeight == consensusParams.nPremineHeight) {
+        return consensusParams.nPremineSubsidy;
+    }
+
+    if (consensusParams.nSubsidyHalvingInterval <= 0 || consensusParams.nInitialSubsidy <= 0) {
+        return 0;
+    }
+
+    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+    if (halvings >= 64) {
+        return 0;
+    }
+
+    CAmount nSubsidy = consensusParams.nInitialSubsidy;
+    nSubsidy >>= halvings;
+    return nSubsidy;
 }
 
 CAmount GetSmartnodePayment(int nHeight, CAmount blockValue, CAmount specialTxFees) {
@@ -2043,7 +2029,7 @@ static int64_t nTimeSubsidy = 0;
 static int64_t nTimeValueValid = 0;
 static int64_t nTimePayeeValid = 0;
 static int64_t nTimeProcessSpecial = 0;
-static int64_t nTimeRaptoreumSpecific = 0;
+static int64_t nTime405CoinSpecific = 0;
 static int64_t nTimeConnect = 0;
 static int64_t nTimeIndex = 0;
 static int64_t nTimeCallbacks = 0;
@@ -2566,9 +2552,9 @@ bool CChainState::ConnectBlock(const CBlock &block, CValidationState &state, CBl
              MILLI * (nTime5_4 - nTime5_3), nTimePayeeValid * MICRO, nTimePayeeValid * MILLI / nBlocksTotal);
 
     int64_t nTime5 = GetTimeMicros();
-    nTimeRaptoreumSpecific += nTime5 - nTime4;
-    LogPrint(BCLog::BENCHMARK, "    - Raptoreum specific: %.2fms [%.2fs (%.2fms/blk)]\n", MILLI * (nTime5 - nTime4),
-             nTimeRaptoreumSpecific * MICRO, nTimeRaptoreumSpecific * MILLI / nBlocksTotal);
+    nTime405CoinSpecific += nTime5 - nTime4;
+    LogPrint(BCLog::BENCHMARK, "    - 405Coin specific: %.2fms [%.2fs (%.2fms/blk)]\n", MILLI * (nTime5 - nTime4),
+             nTime405CoinSpecific * MICRO, nTime405CoinSpecific * MILLI / nBlocksTotal);
 
     // END RAPTOREUM
 
@@ -4957,7 +4943,7 @@ bool CChainState::RollforwardBlock(const CBlockIndex *pindex, CCoinsViewCache &i
     CValidationState state;
     if (!ProcessSpecialTxsInBlock(block, pindex, state, inputs, assetsCache, false /*fJustCheck*/,
                                   false /*fScriptChecks*/)) {
-        return error("RollforwardBlock(RTM): ProcessSpecialTxsInBlock for block %s failed with %s",
+        return error("RollforwardBlock(405): ProcessSpecialTxsInBlock for block %s failed with %s",
                      pindex->GetBlockHash().ToString(), FormatStateMessage(state));
     }
 

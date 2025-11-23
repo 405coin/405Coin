@@ -10,7 +10,7 @@
 #include <script/script.h>
 #include <serialize.h>
 #include <streams.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <util/system.h>
 #include <util/strencodings.h>
 #include <version.h>

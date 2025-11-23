@@ -12,7 +12,7 @@
 
 #include <support/events.h>
 
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <vector>
 

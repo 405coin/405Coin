@@ -1,11 +1,11 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/raptoreum-config.h>
+#include <config/405Coin-config.h>
 #endif
 
 #include <qt/paymentserver.h>
@@ -39,7 +39,7 @@
 #include <QUrlQuery>
 
 const int RAPTOREUM_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString RAPTOREUM_IPC_PREFIX("raptoreum:");
+const QString RAPTOREUM_IPC_PREFIX("405Coin:");
 
 //
 // Create a name that is unique for:
@@ -47,7 +47,7 @@ const QString RAPTOREUM_IPC_PREFIX("raptoreum:");
 //  data directory
 //
 static QString ipcServerName() {
-    QString name("RaptoreumQt");
+    QString name("405CoinQt");
 
     // Append a simple hash of the datadir
     // Note that GetDataDir(true) returns a different path
@@ -80,11 +80,11 @@ void PaymentServer::ipcParseCommandLine(interfaces::Node &node, int argc, char *
         if (arg.startsWith("-"))
             continue;
 
-        // If the raptoreum: URI contains a payment request, we are not able to detect the
+        // If the 405Coin: URI contains a payment request, we are not able to detect the
         // network as that would require fetching and parsing the payment request.
         // That means clicking such an URI which contains a testnet payment request
         // will start a mainnet instance and throw a "wrong network" error.
-        if (arg.startsWith(RAPTOREUM_IPC_PREFIX, Qt::CaseInsensitive)) // raptoreum: URI
+        if (arg.startsWith(RAPTOREUM_IPC_PREFIX, Qt::CaseInsensitive)) // 405Coin: URI
         {
             savedPaymentRequests.append(arg);
 
@@ -147,7 +147,7 @@ PaymentServer::PaymentServer(QObject *parent, bool startLocalServer) :
         uriServer(nullptr),
         optionsModel(nullptr) {
     // Install global event filter to catch QFileOpenEvents
-    // on Mac: sent when you click raptoreum: links
+    // on Mac: sent when you click 405Coin: links
     // other OSes: helpful when dealing with payment request files
     if (parent)
         parent->installEventFilter(this);
@@ -163,7 +163,7 @@ PaymentServer::PaymentServer(QObject *parent, bool startLocalServer) :
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "Q_EMIT message()" here
             QMessageBox::critical(nullptr, tr("Payment request error"),
-                                  tr("Cannot start raptoreum: click-to-pay handler"));
+                                  tr("Cannot start 405Coin: click-to-pay handler"));
         } else {
             connect(uriServer, &QLocalServer::newConnection, this, &PaymentServer::handleURIConnection);
         }
@@ -174,7 +174,7 @@ PaymentServer::~PaymentServer() {
 }
 
 //
-// OSX-specific way of handling raptoreum: URIs
+// OSX-specific way of handling 405Coin: URIs
 //
 bool PaymentServer::eventFilter(QObject *object, QEvent *event) {
     if (event->type() == QEvent::FileOpen) {
@@ -204,10 +204,10 @@ void PaymentServer::handleURIOrFile(const QString &s) {
         return;
     }
 
-    if (s.startsWith("raptoreum://", Qt::CaseInsensitive)) {
-        Q_EMIT message(tr("URI handling"), tr("'raptoreum://' is not a valid URI. Use 'raptoreum:' instead."),
+    if (s.startsWith("405Coin://", Qt::CaseInsensitive)) {
+        Q_EMIT message(tr("URI handling"), tr("'405Coin://' is not a valid URI. Use '405Coin:' instead."),
                        CClientUIInterface::MSG_ERROR);
-    } else if (s.startsWith(RAPTOREUM_IPC_PREFIX, Qt::CaseInsensitive)) // raptoreum: URI
+    } else if (s.startsWith(RAPTOREUM_IPC_PREFIX, Qt::CaseInsensitive)) // 405Coin: URI
     {
         QUrlQuery uri((QUrl(s)));
         // normal URI
@@ -228,7 +228,7 @@ void PaymentServer::handleURIOrFile(const QString &s) {
                     Q_EMIT receivedPaymentRequest(recipient);
             } else
                 Q_EMIT message(tr("URI handling"),
-                               tr("URI cannot be parsed! This can be caused by an invalid Raptoreum address or malformed URI parameters."),
+                               tr("URI cannot be parsed! This can be caused by an invalid 405Coin address or malformed URI parameters."),
                                CClientUIInterface::ICON_WARNING);
 
             return;

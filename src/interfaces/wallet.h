@@ -58,7 +58,7 @@ namespace interfaces {
     using WalletValueMap = std::map<std::string, std::string>;
 
     namespace CoinJoin {
-//! Interface for the wallet constrained src/coinjoin part of a raptoreum node (raptoreumd process).
+//! Interface for the wallet constrained src/coinjoin part of a 405Coin node (405Coind process).
         class Client {
         public:
             virtual ~Client() {}

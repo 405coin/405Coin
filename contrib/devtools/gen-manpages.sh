@@ -7,9 +7,9 @@ BUILDDIR=${BUILDDIR:-$TOPDIR}
 BINDIR=${BINDIR:-$BUILDDIR/src}
 MANDIR=${MANDIR:-$TOPDIR/doc/man}
 
-BITCOIND=${BITCOIND:-$SRCDIR/raptoreumd}
-BITCOINCLI=${BITCOINCLI:-$SRCDIR/raptoreum-cli}
-BITCOINQT=${BITCOINQT:-$SRCDIR/qt/raptoreum-qt}
+BITCOIND=${BITCOIND:-$SRCDIR/405Coind}
+BITCOINCLI=${BITCOINCLI:-$SRCDIR/405Coin-cli}
+BITCOINQT=${BITCOINQT:-$SRCDIR/qt/405Coin-qt}
 
 [ ! -x $BITCOIND ] && echo "$BITCOIND not found or not executable." && exit 1
 
@@ -17,8 +17,8 @@ BITCOINQT=${BITCOINQT:-$SRCDIR/qt/raptoreum-qt}
 BTCVER=($($BITCOINCLI --version | head -n1 | awk -F'[ -]' '{ print $6, $7 }'))
 
 # Create a footer file with copyright content.
-# This gets autodetected fine for raptoreumd if --version-string is not set,
-# but has different outcomes for raptoreum-qt and raptoreum-cli.
+# This gets autodetected fine for 405Coind if --version-string is not set,
+# but has different outcomes for 405Coin-qt and 405Coin-cli.
 echo "[COPYRIGHT]" > footer.h2m
 $BITCOIND --version | sed -n '1!p' >> footer.h2m
 

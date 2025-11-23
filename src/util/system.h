@@ -2,6 +2,7 @@
 // Copyright (c) 2009-2018 The Bitcoin Core developers
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +14,7 @@
 #define BITCOIN_UTIL_SYSTEM_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/raptoreum-config.h>
+#include <config/405Coin-config.h>
 #endif
 
 #include <attributes.h>
@@ -49,7 +50,7 @@
 #define DBG(x)
 #endif
 
-//Raptoreum only features
+//405Coin only features
 
 extern bool fSmartnodeMode;
 extern bool fDisableGovernance;

@@ -15,7 +15,7 @@
 #include <crypto/pkcs5_pbkdf2_hmac_sha512.h>
 #include <random.h>
 #include <util/strencodings.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <vector>
 

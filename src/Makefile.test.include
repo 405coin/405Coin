@@ -1,14 +1,14 @@
 # Copyright (c) 2013-2016 The Bitcoin Core developers
 # Copyright (c) 2014-2018 The Dash Core developers
-# Copyright (c) 2020-2022 The Raptoreum developers
+# Copyright (c) 2025 The 405Coin developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-TESTS += test/test_raptoreum
-bin_PROGRAMS += test/test_raptoreum
-#noinst_PROGRAMS += test/test_raptoreum_fuzzy
+TESTS += test/test_405Coin
+bin_PROGRAMS += test/test_405Coin
+#noinst_PROGRAMS += test/test_405Coin_fuzzy
 TEST_SRCDIR = test
-TEST_BINARY=test/test_raptoreum$(EXEEXT)
+TEST_BINARY=test/test_405Coin$(EXEEXT)
 
 JSON_TEST_FILES = \
   test/data/blockfilters.json \
@@ -28,7 +28,7 @@ RAW_TEST_FILES = \
 
 GENERATED_TEST_FILES = $(JSON_TEST_FILES:.json=.json.h) $(RAW_TEST_FILES:.raw=.raw.h)
 
-# test_raptoreum binary #
+# test_405Coin binary #
 BITCOIN_TESTS =\
   test/arith_uint256_tests.cpp \
   test/scriptnum10.h \
@@ -104,9 +104,9 @@ BITCOIN_TESTS =\
   test/skiplist_tests.cpp \
   test/streams_tests.cpp \
   test/subsidy_tests.cpp \
-  test/test_raptoreum.cpp \
-  test/test_raptoreum.h \
-  test/test_raptoreum_main.cpp \
+  test/test_405Coin.cpp \
+  test/test_405Coin.h \
+  test/test_405Coin_main.cpp \
   test/util_threadnames_tests.cpp \
   test/timedata_tests.cpp \
   test/torcontrol_tests.cpp \
@@ -127,32 +127,32 @@ BITCOIN_TESTS += \
   wallet/test/coinselector_tests.cpp
 endif
 
-test_test_raptoreum_SOURCES = $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
-test_test_raptoreum_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(TESTDEFS) $(EVENT_CFLAGS)
-test_test_raptoreum_LDADD =
+test_test_405Coin_SOURCES = $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_405Coin_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_405Coin_LDADD =
 if ENABLE_WALLET
-test_test_raptoreum_LDADD += $(LIBBITCOIN_WALLET)
+test_test_405Coin_LDADD += $(LIBBITCOIN_WALLET)
 endif
-test_test_raptoreum_LDADD += $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) \
+test_test_405Coin_LDADD += $(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) \
                              $(LIBBITCOIN_CRYPTO) $(LIBDASHBLS) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) $(BACKTRACE_LIB) $(BOOST_LIBS) \
                              $(LIBSECP256K1) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
-test_test_raptoreum_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_405Coin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
-test_test_raptoreum_LDADD += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(BLS_LIBS) $(GMP_LIBS)
-test_test_raptoreum_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS) -static
+test_test_405Coin_LDADD += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(BLS_LIBS) $(GMP_LIBS)
+test_test_405Coin_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS) -static
 
 if ENABLE_ZMQ
-test_test_raptoreum_LDADD += $(ZMQ_LIBS)
+test_test_405Coin_LDADD += $(ZMQ_LIBS)
 endif
 #
 
-# test_raptoreum_fuzzy binary #
-#test_test_raptoreum_fuzzy_SOURCES = test/test_raptoreum_fuzzy.cpp
-#test_test_raptoreum_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-#test_test_raptoreum_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-#test_test_raptoreum_fuzzy_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# test_405Coin_fuzzy binary #
+#test_test_405Coin_fuzzy_SOURCES = test/test_405Coin_fuzzy.cpp
+#test_test_405Coin_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+#test_test_405Coin_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+#test_test_405Coin_fuzzy_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
-#test_test_raptoreum_fuzzy_LDADD = \
+#test_test_405Coin_fuzzy_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
@@ -165,10 +165,10 @@ endif
   $(LIBBITCOIN_CRYPTO_SHANI) \
   $(LIBSECP256K1)
 
-#test_test_raptoreum_fuzzy_LDADD += $(BOOST_LIBS) $(BACKTRACE_LIB)
+#test_test_405Coin_fuzzy_LDADD += $(BOOST_LIBS) $(BACKTRACE_LIB)
 #
 
-nodist_test_test_raptoreum_SOURCES = $(GENERATED_TEST_FILES)
+nodist_test_test_405Coin_SOURCES = $(GENERATED_TEST_FILES)
 
 $(BITCOIN_TESTS): $(GENERATED_TEST_FILES)
 
@@ -176,13 +176,13 @@ CLEAN_BITCOIN_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
 
 CLEANFILES += $(CLEAN_BITCOIN_TEST)
 
-raptoreum_test: $(TEST_BINARY)
+405Coin_test: $(TEST_BINARY)
 
-raptoreum_test_check: $(TEST_BINARY) FORCE
+405Coin_test_check: $(TEST_BINARY) FORCE
 	$(MAKE) check-TESTS TESTS=$^
 
-raptoreum_test_clean : FORCE
-	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_raptoreum_OBJECTS) $(TEST_BINARY)
+405Coin_test_clean : FORCE
+	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_405Coin_OBJECTS) $(TEST_BINARY)
 
 check-local:
 	@echo "Running test/util/bitcoin-util-test.py..."

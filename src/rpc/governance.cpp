@@ -1,5 +1,6 @@
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -175,7 +176,7 @@ static UniValue gobject_prepare(const JSONRPCRequest& request)
 
     // This command is dangerous because it consumes 5 RAPTOREUM irreversibly.
     // If params are lost, it's very hard to bruteforce them and yet
-    // users ignore all instructions on raptoreumcentral etc. and do not save them...
+    // users ignore all instructions on 405Coincentral etc. and do not save them...
     // Let's log them here and hope users do not mess with debug.log
     LogPrintf("gobject_prepare -- params: %s %s %s %s, data: %s, hash: %s\n",
                 request.params[0].getValStr(), request.params[1].getValStr(),
@@ -420,7 +421,7 @@ static UniValue gobject_submit(const JSONRPCRequest &request) {
 
 void gobject_vote_conf_help(const JSONRPCRequest &request) {
     RPCHelpMan{"gobject vote-conf",
-               "Vote on a governance object by smartnode configured in raptoreum.conf\n",
+               "Vote on a governance object by smartnode configured in 405Coin.conf\n",
                {
                        {"governance-hash", RPCArg::Type::STR_HEX, RPCArg::Optional::NO,
                         "hash of the governance object"},
@@ -481,7 +482,7 @@ static UniValue gobject_vote_conf(const JSONRPCRequest &request) {
         nFailed++;
         statusObj.pushKV("result", "failed");
         statusObj.pushKV("errorMessage", "Can't find smartnode by collateral output");
-        resultsObj.pushKV("raptoreum.conf", statusObj);
+        resultsObj.pushKV("405Coin.conf", statusObj);
         returnObj.pushKV("overall",
                          strprintf("Voted successfully %d time(s) and failed %d time(s).", nSuccessful, nFailed));
         returnObj.pushKV("detail", resultsObj);
@@ -506,7 +507,7 @@ static UniValue gobject_vote_conf(const JSONRPCRequest &request) {
         nFailed++;
         statusObj.pushKV("result", "failed");
         statusObj.pushKV("errorMessage", "Failure to sign.");
-        resultsObj.pushKV("raptoreum.conf", statusObj);
+        resultsObj.pushKV("405Coin.conf", statusObj);
         returnObj.pushKV("overall",
                          strprintf("Voted successfully %d time(s) and failed %d time(s).", nSuccessful, nFailed));
         returnObj.pushKV("detail", resultsObj);
@@ -524,7 +525,7 @@ static UniValue gobject_vote_conf(const JSONRPCRequest &request) {
         statusObj.pushKV("errorMessage", exception.GetMessage());
     }
 
-    resultsObj.pushKV("raptoreum.conf", statusObj);
+    resultsObj.pushKV("405Coin.conf", statusObj);
 
     returnObj.pushKV("overall",
                      strprintf("Voted successfully %d time(s) and failed %d time(s).", nSuccessful, nFailed));
@@ -999,7 +1000,7 @@ static UniValue gobject_getcurrentvotes(const JSONRPCRequest &request) {
                #ifdef ENABLE_WALLET
                "  vote-alias         - Vote on a governance object by smartnode proTxHash\n"
                #endif // ENABLE_WALLET
-               "  vote-conf          - Vote on a governance object by smartnode configured in raptoreum.conf\n"
+               "  vote-conf          - Vote on a governance object by smartnode configured in 405Coin.conf\n"
 #ifdef ENABLE_WALLET
             "  vote-many          - Vote on a governance object by all smartnodes for which the voting key is in the wallet\n"
 #endif // ENABLE_WALLET
@@ -1206,11 +1207,11 @@ static UniValue getsuperblockbudget(const JSONRPCRequest &request) {
 static const CRPCCommand commands[] =
         { //  category              name                      actor (function)         argNames
                 //  --------------------- ------------------------  -----------------------  ----------
-                /* Raptoreum features */
-                {"raptoreum", "getgovernanceinfo",   &getgovernanceinfo,   {}},
-                {"raptoreum", "getsuperblockbudget", &getsuperblockbudget, {"index"}},
-                {"raptoreum", "gobject",             &gobject,             {}},
-                {"raptoreum", "voteraw",             &voteraw,             {"tx_hash", "tx_index", "gov_hash", "signal", "outcome", "time", "sig"}},
+                /* 405Coin features */
+                {"405Coin", "getgovernanceinfo",   &getgovernanceinfo,   {}},
+                {"405Coin", "getsuperblockbudget", &getsuperblockbudget, {"index"}},
+                {"405Coin", "gobject",             &gobject,             {}},
+                {"405Coin", "voteraw",             &voteraw,             {"tx_hash", "tx_index", "gov_hash", "signal", "outcome", "time", "sig"}},
 
         };
 

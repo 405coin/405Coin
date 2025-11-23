@@ -87,7 +87,7 @@
       <item>
        <widget class="QValidatedLineEdit" name="payTo">
         <property name="toolTip">
-         <string>The Raptoreum address to send the payment to</string>
+         <string>The 405Coin address to send the payment to</string>
         </property>
        </widget>
       </item>
@@ -330,7 +330,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>123456 RTM</string>
+         <string>123456 405</string>
         </property>
         <property name="margin">
          <number>0</number>
@@ -377,7 +377,7 @@
   <tabstop>payAmount</tabstop>
  </tabstops>
  <resources>
-  <include location="../raptoreum.qrc"/>
+  <include location="../405Coin.qrc"/>
  </resources>
  <connections/>
 </ui>

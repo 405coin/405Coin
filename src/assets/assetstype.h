@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,9 +9,9 @@
 #include <coins.h>
 #include <key_io.h>
 
-#define RTM_R 0x72 //R
-#define RTM_T 0x74 //T
-#define RTM_M 0x6d //M
+#define COIN_R 0x72 //R
+#define COIN_T 0x74 //T
+#define COIN_M 0x6d //M
 #define MAX_UNIQUE_ID 0xffffffffffffffff
 
 class CAssetTransfer {

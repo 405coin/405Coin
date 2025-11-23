@@ -64,7 +64,7 @@ std::vector <fs::path> ListWalletDir() {
                 // Found top-level wallet.dat btree file, add top level directory "" as a wallet.
                 paths.emplace_back();
             } else {
-                // Found top-level btree file not called wallet.dat. Current Raptoreum software
+                // Found top-level btree file not called wallet.dat. Current 405Coin software
                 // will never create these files but will allow them to be opened in a shared
                 // database environment for backwards compatibility.
                 // Add it to the list of available wallets;

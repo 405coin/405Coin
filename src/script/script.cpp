@@ -274,16 +274,16 @@ bool CScript::IsAssetScript() const {
 
 bool CScript::IsAssetScript(int &nIndex) const {
     if (this->size() > 31) {
-        if ((*this)[25] == OP_ASSET_ID) { // OP_RTM_ASSET is always in the 25 index of the script if it exists
+        if ((*this)[25] == OP_ASSET_ID) { // OP_rtm_ASSET is always in the 25 index of the script if it exists
             nIndex = -1;
-            if ((*this)[27] == RTM_R) { // Check to see if RTM starts at 27 ( this->size() < 105)
-                if ((*this)[28] == RTM_T)
-                    if ((*this)[29] == RTM_M)
+            if ((*this)[27] == COIN_R) { // Check to see if 405 starts at 27 ( this->size() < 105)
+                if ((*this)[28] == COIN_T)
+                    if ((*this)[29] == COIN_M)
                         nIndex = 30;
             } else {
-                if ((*this)[28] == RTM_R) // Check to see if RTM starts at 28 ( this->size() >= 105)
-                    if ((*this)[29] == RTM_T)
-                        if ((*this)[30] == RTM_M)
+                if ((*this)[28] == COIN_R) // Check to see if 405 starts at 28 ( this->size() >= 105)
+                    if ((*this)[29] == COIN_T)
+                        if ((*this)[30] == COIN_M)
                             nIndex = 31;
             }
             if (nIndex > 0) {

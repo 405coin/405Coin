@@ -1,5 +1,5 @@
 <pre>
-  Raptoreum Improvement Proposal
+  405Coin Improvement Proposal
   RIP: 01
   Title: Round Voting
   Author: Jami Bradley <codeiskey@protonmail.com>

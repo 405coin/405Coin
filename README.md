@@ -1,38 +1,60 @@
-Raptoreum Core Latest v2.0.3
-===========================
+405Coin Core
+============
 
-|CI|master|develop|
-|-|-|-|
+> "Error 405: Profit Not Found - but the memes were priceless."
 
-The name Raptoreum is derived from the Victorian term for a bird of prey and ium/eum place for a pertaining to in this case birds of prey. The name comes from the team’s extensive experience in the security field with top level skills covering all aspects of it. This is a unique strength in the crypto community and will leverage well into a successful project.
+405Coin is a Ghostrider fork with CPU mining, 2-minute blocks, and a Smartnode network.
 
-Introduction
-Raptoreum began as the fairly simple idea, introducing smart contracts which would allow on chain, trustless transfers (goodbye centralized marketplaces) on the Ravencoin codebase, however with the automation of assets and RTM (Raptoreum).
-The project has quickly evolved, adding innovative features that not only further expand the asset layer, but also introduce features that could help other Blockchain projects. Ravencoin unfortunately suffered several serious breaches of its asset layer so that code base has been abandoned by us. We are currently working with and building on Raptoreum code expending its capabilities significantly.
+Overview
+--------
 
-Raptoreum is now a code fork of Dash and inherits current and optionally future features such as chain locks, oracles etc. We are further expanding capabilities by adding the following features:
-A)	The deployment of a unique asset layer.
-B)	The option to lock X amount of coins or assets into a special transaction. Coins are unlocked at a block number of choice or timestamp.
-C)	Trustless on chain transfers of assets and native coins VIA Smart Contracts.
-D)	Integrating, developing and deploying a VM protocol that would allow for smart contracts in 4 major programming languages as opposed to the situation with Ethereum being limited to solidity.
+Blocks land roughly every two minutes, secured by Smartnodes. Rewards start at 1,927,405 and reduce about every four years, keeping a playful CPU-mining spirit and simple network setup.
 
-These additional features open up the power and ease of use of Raptoreum’s features to a greater variety of industries under the Distributed Application umbrella. DAPP's are a critical part of driving widespread adoption as recently seen with DEFI and Raptoreum hopes to help provide further alternatives and possibilities for DAPP developers particularly in the field of opening up new programming languages for DAPP and contract development.
+Key Specs
+---------
 
-It is one of our goals to not only innovate ideas for Raptoreum but to contribute back to the general crypto community with open-source features that anybody can use to help their Blockchain projects succeed.
+| Spec | Value |
+| --- | --- |
+| Ticker | 405 |
+| Algorithm | Ghostrider |
+| Ports | P2P 10226 / RPC 10225 |
+| Block Time | ~120 s |
+| Initial Block Reward | 1,927,405 |
+| Halving | ~every 4 years |
+| Premine | 20,000,000,405 |
+| Max Supply | ~4.05B 405 coins |
 
+Smartnode Collateral Schedule
+-----------------------------
+
+Smartnodes activate at block 5,761 with increasing collateral that keeps the network resilient and rewards long-term participants.
+
+- 110,000 - blocks 5,761-88,720
+- 150,000 - blocks 88,721-132,720
+- 190,000 - blocks 132,721-176,720
+- 240,000 - blocks 176,721-220,720
+- 280,000 - blocks 220,721-264,720
+- 350,000 - from block 264,721
+
+Community and Socials
+---------------------
+
+- GitHub: https://github.com/405coin/405Coin/
+- Twitter: https://x.com/405Coin
+- Discord: https://discord.gg/dCquzjap
 
 License
 -------
 
-Raptoreum Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+405Coin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is meant to be stable. Development is done in separate branches.
-[Tags](https://github.com/raptor3um/raptoreum/tags) are created to indicate new official,
-stable release versions of Raptoreum Core.
+[Tags](https://github.com/405coin/405Coin/tags) are created to indicate new official,
+stable release versions of 405Coin Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 

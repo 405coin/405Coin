@@ -7,7 +7,7 @@
 #include <uint256.h>
 #include <undo.h>
 #include <util/strencodings.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <validation.h>
 #include <consensus/validation.h>
 

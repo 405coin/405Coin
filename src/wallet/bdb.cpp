@@ -143,7 +143,7 @@ bool BerkeleyEnvironment::Open(bool retry) {
     fs::path pathIn = strPath;
     TryCreateDirectories(pathIn);
     if (!LockDirectory(pathIn, ".walletlock")) {
-        LogPrintf("Cannot obtain a lock on wallet directory %s. Another instance of Raptoreum may be using it.\n",
+        LogPrintf("Cannot obtain a lock on wallet directory %s. Another instance of 405Coin may be using it.\n",
                   strPath);
         return false;
     }
@@ -292,7 +292,7 @@ bool BerkeleyDatabase::Verify(std::string &errorStr) {
         int result = db.verify(strFile.c_str(), nullptr, nullptr, 0);
         if (result != 0) {
             errorStr = strprintf(
-                    _("%s corrupt. Try using the wallet tool raptoreum-wallet to salvage or restoring a backup."),
+                    _("%s corrupt. Try using the wallet tool 405Coin-wallet to salvage or restoring a backup."),
                     file_path);
             return false;
         }

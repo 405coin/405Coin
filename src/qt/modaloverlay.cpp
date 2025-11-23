@@ -1,5 +1,5 @@
 // Copyright (c) 2016 The Bitcoin Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -46,7 +46,7 @@ ModalOverlay::ModalOverlay(bool enable_wallet, QWidget *parent) :
     if (!enable_wallet) {
         ui->infoText->setVisible(false);
         ui->infoTextStrong->setText(
-                tr("Raptoreum Core is currently syncing. It will download headers at first and then blocks from peers and validate them until reaching latest block mined at chain."));
+                tr("405Coin Core is currently syncing. It will download headers at first and then blocks from peers and validate them until reaching latest block mined at chain."));
     }
 }
 

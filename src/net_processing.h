@@ -118,7 +118,7 @@ bool IsBanned(NodeId nodeid)
 
 EXCLUSIVE_LOCKS_REQUIRED(cs_main);
 
-// Upstream moved this into net_processing.cpp (13417), however since we use Misbehaving in a number of raptoreum specific
+// Upstream moved this into net_processing.cpp (13417), however since we use Misbehaving in a number of 405Coin specific
 // files such as mnauth.cpp and governance.cpp it makes sense to keep it in the header
 /** Increase a node's misbehavior score. */
 void Misbehaving(NodeId nodeid, int howmuch, const std::string &message = "")

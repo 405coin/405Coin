@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 The Raptoreum developer
+ * Copyright (c) 2020 The 405Coin developer
  * Distributed under the MIT software license, see the accompanying
  * file COPYING or http://www.opensource.org/licenses/mit-license.php.
  * 
@@ -19,7 +19,7 @@
 #include <limits.h>
 //using namespace std;
 
-static const std::string DEFAULT_FOUNDER_ADDRESS = "RTtyQU6DoSuNWetT4WUem5qXP5jNYGpwat";
+static const std::string DEFAULT_FOUNDER_ADDRESS = "4o5epMWh6aQRYJ8EtHDg7ThcRbZKPGdYZ4XS";
 struct FounderRewardStructure {
     int blockHeight;
     int rewardPercentage;

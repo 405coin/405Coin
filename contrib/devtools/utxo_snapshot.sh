@@ -16,8 +16,8 @@ if (( $# < 3 )); then
   echo
   echo 'Examples:'
   echo
-  echo "  ./contrib/devtools/utxo_snapshot.sh 570000 utxo.dat ./src/raptoreum-cli -datadir=\$(pwd)/testdata"
-  echo '  ./contrib/devtools/utxo_snapshot.sh 570000 - ./src/raptoreum-cli'
+  echo "  ./contrib/devtools/utxo_snapshot.sh 570000 utxo.dat ./src/405Coin-cli -datadir=\$(pwd)/testdata"
+  echo '  ./contrib/devtools/utxo_snapshot.sh 570000 - ./src/405Coin-cli'
   exit 1
 fi
 

@@ -1,5 +1,5 @@
 // Copyright (c) 2018-2021 The Dash Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -112,7 +112,7 @@ static RPCArg GetRpcArg(const std::string &strParamName) {
     static const std::map <std::string, RPCArg> mapParamHelp = {
             {"collateralAddress",
                     {"collateralAddress",       RPCArg::Type::STR,                RPCArg::Optional::NO,
-                            "The Raptoreum address to send the collateral to."}
+                            "The 405Coin address to send the collateral to."}
             },
             {"collateralAmount",
                     {"collateralAmount",        RPCArg::Type::NUM,                RPCArg::Optional::NO,
@@ -172,17 +172,17 @@ static RPCArg GetRpcArg(const std::string &strParamName) {
             },
             {"ownerAddress",
                     {"ownerAddress",            RPCArg::Type::STR,                RPCArg::Optional::NO,
-                            "The raptoreum address to use for payee updates and proposal voting.\n"
+                            "The 405Coin address to use for payee updates and proposal voting.\n"
                             "The corresponding private key does not have to be known by your wallet.\n"
                             "The address must be unused and must differ from the collateralAddress."}
             },
             {"payoutAddress_register",
                     {"payoutAddress_register",  RPCArg::Type::STR,                RPCArg::Optional::NO,
-                            "The raptoreum address to use for smartnode reward payments."}
+                            "The 405Coin address to use for smartnode reward payments."}
             },
             {"payoutAddress_update",
                     {"payoutAddress_update",    RPCArg::Type::STR,                RPCArg::Optional::NO,
-                            "The raptoreum address to use for smartnode reward payments.\n"
+                            "The 405Coin address to use for smartnode reward payments.\n"
                             "If set to an empty string, the currently active payout address is reused."}
             },
             {"proTxHash",
@@ -714,7 +714,7 @@ UniValue protx_register(const JSONRPCRequest& request)
     if (!request.params[paramIdx + 6].isNull()) {
         fundDest = DecodeDestination(request.params[paramIdx + 6].get_str());
         if (!IsValidDestination(fundDest))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Raptoreum address: ") + request.params[paramIdx + 6].get_str());
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid 405Coin address: ") + request.params[paramIdx + 6].get_str());
     }
 
     FundSpecialTx(pwallet, tx, ptx, fundDest);
@@ -883,7 +883,7 @@ UniValue protx_update_service(const JSONRPCRequest& request)
     if (!request.params[4].isNull()) {
         feeSource = DecodeDestination(request.params[4].get_str());
         if (!IsValidDestination(feeSource))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Raptoreum address: ") + request.params[4].get_str());
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid 405Coin address: ") + request.params[4].get_str());
     } else {
         if (ptx.scriptOperatorPayout != CScript()) {
             // use operator reward address as default source for fees
@@ -979,7 +979,7 @@ UniValue protx_update_registrar(const JSONRPCRequest& request)
     if (!request.params[4].isNull()) {
         feeSourceDest = DecodeDestination(request.params[4].get_str());
         if (!IsValidDestination(feeSourceDest))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Raptoreum address: ") + request.params[4].get_str());
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid 405Coin address: ") + request.params[4].get_str());
     }
 
     FundSpecialTx(pwallet, tx, ptx, feeSourceDest);
@@ -1050,7 +1050,7 @@ UniValue protx_revoke(const JSONRPCRequest& request)
     if (!request.params[3].isNull()) {
         CTxDestination feeSourceDest = DecodeDestination(request.params[3].get_str());
         if (!IsValidDestination(feeSourceDest))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Raptoreum address: ") + request.params[3].get_str());
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid 405Coin address: ") + request.params[3].get_str());
         FundSpecialTx(pwallet, tx, ptx, feeSourceDest);
     } else if (dmn->pdmnState->scriptOperatorPayout != CScript()) {
         // Using funds from previousely specified operator payout address
@@ -1099,7 +1099,7 @@ void protx_quick_setup_help(const JSONRPCRequest& request)
                       {RPCResult::Type::STR, "collateralAmount", "The collateral Amount was used for this protx."},
                       {RPCResult::Type::STR_HEX, "operationPubkey", "The public key from bls generate."},
                       {RPCResult::Type::STR_HEX, "operationSecret", "The secret key from bls generate."},
-                      {RPCResult::Type::STR, "raptoreum.conf", "The content of raptoreum.conf to be used in vps node."},
+                      {RPCResult::Type::STR, "405Coin.conf", "The content of 405Coin.conf to be used in vps node."},
             }
         },
         RPCExamples{
@@ -1153,7 +1153,7 @@ UniValue signMessage(CWallet * const pwallet, std::string strAddress, std::strin
 
 UniValue createConfigFile(std::string blsPrivateKey, std::string ip, std::string address) {
 
-    std::string fileName = get_current_dir() + "/" + address + "_raptoreum.conf";
+    std::string fileName = get_current_dir() + "/" + address + "_rtmCoin.conf";
     std::ofstream configFile(fileName);
     std::string username = generateRandomString(10, false);
     std::string password = generateRandomString(20, true);
@@ -1224,7 +1224,7 @@ UniValue protx_quick_setup(const JSONRPCRequest& request)
     result.pushKV("operatorPublic", blsKeys["public"].get_str());
     result.pushKV("operatorSecret", blsKeys["secret"].get_str());
     UniValue config = createConfigFile(blsKeys["secret"].get_str(), request.params[2].get_str(), prepareResult["collateralAddress"].get_str());
-    result.pushKV("raptoreum.conf",config.get_str());
+    result.pushKV("405Coin.conf",config.get_str());
 
     return result;
 }

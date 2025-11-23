@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -53,7 +53,7 @@ class QWidget;
 
 QT_END_NAMESPACE
 
-/** Utility functions used by the Raptoreum Qt UI.
+/** Utility functions used by the 405Coin Qt UI.
  */
 namespace GUIUtil {
     /* Enumeration of possible "colors" */
@@ -137,7 +137,7 @@ namespace GUIUtil {
     // Setup appearance settings if not done yet
     void setupAppearance(QWidget *parent, OptionsModel *model);
 
-    // Parse "raptoreum:" URI into recipient object, return true on successful parsing
+    // Parse "405Coin:" URI into recipient object, return true on successful parsing
     bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out);
 
     bool parseBitcoinURI(QString uri, SendCoinsRecipient *out);
@@ -214,7 +214,7 @@ namespace GUIUtil {
     // Open debug.log
     void openDebugLogfile();
 
-    // Open raptoreum.conf
+    // Open 405Coin.conf
     void openConfigfile();
 
     // Browse backup folder
@@ -386,7 +386,7 @@ namespace GUIUtil {
     /** get font size with GUIUtil::fontScale applied */
     double getScaledFontSize(int nSize);
 
-    /** Load raptoreum specific appliciation fonts */
+    /** Load 405Coin specific appliciation fonts */
     bool loadFonts();
 
     /** Check if the fonts have been loaded successfully */
@@ -439,8 +439,8 @@ namespace GUIUtil {
     /** Return the name of the currently active theme.*/
     QString getActiveTheme();
 
-    /** Check if a raptoreum specific theme is activated (light/dark).*/
-    bool raptoreumThemeActive();
+    /** Check if a 405Coin specific theme is activated (light/dark).*/
+    bool Is405CoinThemeActive();
 
     /** Load the theme and update all UI elements according to the appearance settings. */
     void loadTheme(bool fForce = false);

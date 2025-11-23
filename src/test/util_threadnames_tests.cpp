@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <util/threadnames.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <thread>
 #include <vector>
@@ -11,7 +11,7 @@
 #include <mutex>
 
 #if defined(HAVE_CONFIG_H)
-#include <config/raptoreum-config.h>
+#include <config/405Coin-config.h>
 #endif
 
 #include <boost/test/unit_test.hpp>

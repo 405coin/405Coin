@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite tests="360" skipped="0" errors="316" failures="0" id="0" name="Raptoreum_Test_Suite" time="1.41566">
+<testsuite tests="360" skipped="0" errors="316" failures="0" id="0" name="405Coin_Test_Suite" time="1.41566">
 <testcase assertions="1060" classname="arith_uint256_tests" name="basics" time="0.045808">
 </testcase>
 <testcase assertions="3328" classname="arith_uint256_tests" name="shifts" time="0.009621">

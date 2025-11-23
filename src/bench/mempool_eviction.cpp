@@ -4,7 +4,7 @@
 
 #include <bench/bench.h>
 #include <policy/policy.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <txmempool.h>
 
 static void AddTx(const CMutableTransaction &tx, const CAmount &nFee, const CAmount &specialTxFee, CTxMemPool &pool)

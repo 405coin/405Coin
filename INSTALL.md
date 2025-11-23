@@ -1,5 +1,5 @@
-Building Raptoreum
+Building 405Coin
 =============
 
 See doc/build-*.md for instructions on building the various
-elements of the Raptoreum Core reference implementation of Raptoreum.
+elements of the 405Coin Core reference implementation of 405Coin.

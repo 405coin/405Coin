@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package raptoreumd/raptoreum-qt
-for Debian-based Linux systems. If you compile raptoreumd/raptoreum-qt yourself, there are some useful files here.
+This directory contains files used to package 405Coind/405Coin-qt
+for Debian-based Linux systems. If you compile 405Coind/405Coin-qt yourself, there are some useful files here.
 
-## raptoreum: URI support ##
+## 405Coin: URI support ##
 
 
-raptoreum-qt.desktop  (Gnome / Open Desktop)
+405Coin-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install raptoreum-qt.desktop
+	sudo desktop-file-install 405Coin-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your raptoreum-qt binary to `/usr/bin`
-and the `../../share/pixmaps/raptoreum128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your 405Coin-qt binary to `/usr/bin`
+and the `../../share/pixmaps/405Coin128.png` to `/usr/share/pixmaps`
 
-raptoreum-qt.protocol (KDE)
+405Coin-qt.protocol (KDE)
 

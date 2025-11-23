@@ -1,4 +1,4 @@
-// Copyright (c) 2023 The Raptoreum developers
+// Copyright (c) 2023 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -619,7 +619,7 @@ UniValue sendasset(const JSONRPCRequest &request) {
                 "1. \"asset_id\"                (string, required) asset hash id or asset name\n"
                 "2. \"qty\"                     (numeric, required) number of assets you want to send to the address\n"
                 "3. \"to_address\"              (string, required) address to send the asset to\n"
-                "4. \"change_address\"          (string, optional, default = \"\") the transactions RTM change will be sent to this address\n"
+                "4. \"change_address\"          (string, optional, default = \"\") the transactions 405 change will be sent to this address\n"
                 "5. \"asset_change_address\"    (string, optional, default = \"\") the transactions Asset change will be sent to this address\n"
 
                 "\nResult:\n"
@@ -644,7 +644,7 @@ UniValue sendasset(const JSONRPCRequest &request) {
     CAmount curBalance = pwallet->GetBalance().m_mine_trusted;
     if (curBalance == 0) {
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS,
-                           "Error: This wallet doesn't contain any RTM, transfering an asset requires a network fee");
+                           "Error: This wallet doesn't contain any 405, transfering an asset requires a network fee");
     }
 
     // get asset metadadta
@@ -657,7 +657,7 @@ UniValue sendasset(const JSONRPCRequest &request) {
     std::string to_address = request.params[2].get_str();
     CTxDestination to_dest = DecodeDestination(to_address);
     if (!IsValidDestination(to_dest)) {
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Raptoreum address: ") + to_address);
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid 405Coin address: ") + to_address);
     }
 
     CAmount nAmount = AmountFromValue(request.params[1]);
@@ -688,7 +688,7 @@ UniValue sendasset(const JSONRPCRequest &request) {
     CTxDestination change_dest = DecodeDestination(change_address);
     if (!change_address.empty() && !IsValidDestination(change_dest))
         throw JSONRPCError(RPC_INVALID_PARAMETER,
-                           std::string("RTM change address must be a valid address. Invalid address: ") +
+                           std::string("405 change address must be a valid address. Invalid address: ") +
                            change_address);
 
     CTxDestination asset_change_dest = DecodeDestination(asset_change_address);
@@ -860,9 +860,9 @@ UniValue listunspentassets(const JSONRPCRequest& request)
             "\nArguments:\n"
             "1. minconf          (numeric, optional, default=1) The minimum confirmations to filter\n"
             "2. maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter\n"
-            "3. \"addresses\"      (string) A json array of raptoreum addresses to filter\n"
+            "3. \"addresses\"      (string) A json array of 405Coin addresses to filter\n"
             "    [\n"
-            "      \"address\"     (string) raptoreum address\n"
+            "      \"address\"     (string) 405Coin address\n"
             "      ,...\n"
             "    ]\n"
             "4. include_unsafe (bool, optional, default=true) Include outputs that are not safe to spend\n"
@@ -882,9 +882,9 @@ UniValue listunspentassets(const JSONRPCRequest& request)
             "  {\n"
             "    \"txid\" : \"txid\",          (string) the transaction id \n"
             "    \"vout\" : n,               (numeric) the vout value\n"
-            "    \"address\" : \"address\",    (string) the raptoreum address\n"
+            "    \"address\" : \"address\",    (string) the 405Coin address\n"
             "    \"label\" : \"label\",        (string) The associated label, or \"\" for the default label\n"
-            "    \"account\" : \"account\",    (string) DEPRECATED. This field will be removed in V0.18. To see this deprecated field, start raptoreumd with -deprecatedrpc=accounts. The associated account, or \"\" for the default account\n"
+            "    \"account\" : \"account\",    (string) DEPRECATED. This field will be removed in V0.18. To see this deprecated field, start 405Coind with -deprecatedrpc=accounts. The associated account, or \"\" for the default account\n"
             "    \"scriptPubKey\" : \"key\",   (string) the script key\n"
             "    \"amount\" : x.xxx,         (numeric) the transaction output amount in " + CURRENCY_UNIT + "\n"
             "    \"confirmations\" : n,      (numeric) The number of confirmations\n"
@@ -931,7 +931,7 @@ UniValue listunspentassets(const JSONRPCRequest& request)
             const UniValue& input = inputs[idx];
             CTxDestination dest = DecodeDestination(input.get_str());
             if (!IsValidDestination(dest)) {
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Raptoreum address: ") + input.get_str());
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid 405Coin address: ") + input.get_str());
             }
             if (!destinations.insert(dest).second) {
                 throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ") + input.get_str());
@@ -1218,7 +1218,7 @@ UniValue listassetbalancesbyaddress(const JSONRPCRequest& request)
             "\nReturns a list of all asset balances for an address.\n"
 
             "\nArguments:\n"
-            "1. \"address\"                  (string, required) a raptoreum address\n"
+            "1. \"address\"                  (string, required) a 405Coin address\n"
             "2. \"onlytotal\"                (boolean, optional, default=false) when false result is just a list of assets balances -- when true the result is just a single number representing the number of assets\n"
             "3. \"count\"                    (integer, optional, default=50000, MAX=50000) truncates results to include only the first _count_ assets found\n"
             "4. \"start\"                    (integer, optional, default=0) results skip over the first _start_ assets found (if negative it skips back from the end)\n"
@@ -1239,7 +1239,7 @@ UniValue listassetbalancesbyaddress(const JSONRPCRequest& request)
     std::string address = request.params[0].get_str();
     CTxDestination destination = DecodeDestination(address);
     if (!IsValidDestination(destination)) {
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Raptoreum address: ") + address);
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid 405Coin address: ") + address);
     }
 
     bool fOnlyTotal = false;

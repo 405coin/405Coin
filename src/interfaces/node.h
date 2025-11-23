@@ -48,7 +48,7 @@ namespace interfaces {
 
     class WalletClient;
 
-//! Interface for the src/evo part of a raptoreum node (raptoreumd process).
+//! Interface for the src/evo part of a 405Coin node (405Coind process).
     class EVO {
     public:
         virtual ~EVO() {}
@@ -56,7 +56,7 @@ namespace interfaces {
         virtual CDeterministicMNList getListAtChainTip() = 0;
     };
 
-//! Interface for the src/llmq part of a raptoreum node (raptoreumd process).
+//! Interface for the src/llmq part of a 405Coin node (405Coind process).
     class LLMQ {
     public:
         virtual ~LLMQ() {}
@@ -64,7 +64,7 @@ namespace interfaces {
         virtual size_t getInstantSentLockCount() = 0;
     };
 
-//! Interface for the src/smartnode part of a raptoreum node (raptoreumd process).
+//! Interface for the src/smartnode part of a 405Coin node (405Coind process).
     namespace Smartnode {
         class Sync {
         public:
@@ -123,7 +123,7 @@ namespace interfaces {
         double verification_progress;
     };
 
-//! Top-level interface for a raptoreum node (raptoreumd process).
+//! Top-level interface for a 405Coin node (405Coind process).
     class Node {
     public:
         virtual ~Node() {}

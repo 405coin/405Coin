@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,7 +7,7 @@
 #define BITCOIN_QT_BITCOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/raptoreum-config.h>
+#include <config/405Coin-config.h>
 #endif
 
 #include <qt/optionsdialog.h>
@@ -419,7 +419,7 @@ public
 
     void showRepair();
 
-    /** Open external (default) editor with raptoreum.conf */
+    /** Open external (default) editor with 405Coin.conf */
     void showConfEditor();
 
     /** Show folder with wallet backups in default file browser */

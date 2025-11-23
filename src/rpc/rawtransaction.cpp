@@ -2,6 +2,7 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2021 The Dash Core developers
 // Copyright (c) 2020-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -359,7 +360,7 @@ static UniValue getrawtransaction(const JSONRPCRequest &request) {
                                                                     {RPCResult::Type::ARR, "addresses", "",
                                                                      {
                                                                              {RPCResult::Type::STR, "address",
-                                                                              "raptoreum address"},
+                                                                              "405Coin address"},
                                                                      }},
                                                             }},
                                                    }},
@@ -640,7 +641,7 @@ static UniValue createrawtransaction(const JSONRPCRequest &request) {
                                 {"", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED, "",
                                  {
                                          {"address", RPCArg::Type::AMOUNT, RPCArg::Optional::NO,
-                                          "A key-value pair. The key (string) is the Raptoreum address, the value (float or string) is the amount in " +
+                                          "A key-value pair. The key (string) is the 405Coin address, the value (float or string) is the amount in " +
                                           CURRENCY_UNIT},
                                  },
                                 },
@@ -652,7 +653,7 @@ static UniValue createrawtransaction(const JSONRPCRequest &request) {
                                          {"future_locktime", RPCArg::Type::NUM, RPCArg::Optional::NO,
                                           "Total time in seconds from its first confirmation for this future to mature."},
                                          {"future_amount", RPCArg::Type::NUM, RPCArg::Optional::NO,
-                                          "Raptoreum amount to be locked."},
+                                          "405Coin amount to be locked."},
                                  },
                                 },
 
@@ -753,7 +754,7 @@ static UniValue decoderawtransaction(const JSONRPCRequest &request) {
                                                           {RPCResult::Type::ARR, "addresses", "",
                                                            {
                                                                    {RPCResult::Type::STR, "address",
-                                                                    "Raptoreum address"},
+                                                                    "405Coin address"},
                                                            }},
                                                   }},
                                          }},
@@ -806,7 +807,7 @@ static UniValue decodescript(const JSONRPCRequest &request) {
                                {RPCResult::Type::NUM, "reqSigs", "The required signatures"},
                                {RPCResult::Type::ARR, "addresses", "",
                                 {
-                                        {RPCResult::Type::STR, "address", "Raptoreum address"},
+                                        {RPCResult::Type::STR, "address", "405Coin address"},
                                 }},
                                {RPCResult::Type::STR, "p2sh",
                                 "address of P2SH script wrapping this redeem script (not returned if the script is already a P2SH)"},

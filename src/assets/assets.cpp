@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2023 The Raptoreum developers
+// Copyright (c) 2025 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -15,15 +15,15 @@
 
 static const std::regex name_root_characters("^[A-Z0-9._]{3,}$");
 static const std::regex name_sub_characters("^[a-zA-Z0-9 ]{3,}$");
-static const std::regex rtm_names("^RTM$|^RAPTOREUM$|^wRTM$|^WRTM$|^RTMcoin$|^RTMCOIN$");
+static const std::regex coin_names("^405$|^RAPTOREUM$|^w405$|^W405$|^405coin$|^405COIN$");
 
 
 bool IsAssetNameValid(std::string name, bool isRoot) {
     if (name.length() < 3 || name.length() > 128) return false;
     if (isRoot)
-        return std::regex_match(name, name_root_characters) && !std::regex_match(name, rtm_names);
+        return std::regex_match(name, name_root_characters) && !std::regex_match(name, coin_names);
     else
-        return std::regex_match(name, name_sub_characters) && !std::regex_match(name, rtm_names); 
+        return std::regex_match(name, name_sub_characters) && !std::regex_match(name, coin_names); 
 }
 
 CAmount getAssetsFeesCoin() {

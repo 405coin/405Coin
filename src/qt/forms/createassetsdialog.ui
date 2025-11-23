@@ -574,7 +574,7 @@
           <item row="15" column="0">
            <widget class="QLabel" name="targetLabel">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The RTM address that will receive the minted asset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The 405 address that will receive the minted asset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Target Address:</string>
@@ -584,7 +584,7 @@
           <item row="4" column="0">
            <widget class="QLabel" name="addressLabel">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RTM address that will own this asset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;405 address that will own this asset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Owner Address:</string>
@@ -596,10 +596,10 @@
             <item>
              <widget class="QValidatedLineEdit" name="targetaddressText">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The RTM address that will receive the minted asset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The 405 address that will receive the minted asset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="placeholderText">
-               <string>The RTM address that will receive the minted asset</string>
+               <string>The 405 address that will receive the minted asset</string>
               </property>
              </widget>
             </item>
@@ -661,13 +661,13 @@
             <item>
              <widget class="QValidatedLineEdit" name="owneraddressText">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RTM address that will own this asset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;405 address that will own this asset&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string/>
               </property>
               <property name="placeholderText">
-               <string>The RTM address that own this asset</string>
+               <string>The 405 address that own this asset</string>
               </property>
              </widget>
             </item>
@@ -1208,7 +1208,7 @@
                  <item>
                   <widget class="QCheckBox" name="checkBoxMinimumFee">
                    <property name="toolTip">
-                    <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for Raptoreum transactions than the network can process.</string>
+                    <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for 405Coin transactions than the network can process.</string>
                    </property>
                    <property name="text">
                     <string/>
@@ -1221,7 +1221,7 @@
                     <bool>true</bool>
                    </property>
                    <property name="toolTip">
-                    <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for Raptoreum transactions than the network can process.</string>
+                    <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for 405Coin transactions than the network can process.</string>
                    </property>
                    <property name="text">
                     <string>(read the tooltip)</string>
@@ -1530,7 +1530,7 @@
           <enum>Qt::LeftToRight</enum>
          </property>
          <property name="text">
-          <string>123.456 RTM</string>
+          <string>123.456 405</string>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>

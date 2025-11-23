@@ -1,4 +1,4 @@
-// Copyright (c) 2024 The Raptoreum developers
+// Copyright (c) 2024 The 405Coin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,8 +14,8 @@
 
 static std::string GET_URI = "/get/";
 static std::string UPLOAD_URI = "/upload";
-static std::string DEFAULT_IPFS_SERVICE_URL = "ipfsm.raptoreum.com";
-static std::string DEFAULT_IPFS_GATEWAY_URL = "https://ipfsweb.raptoreum.com/ipfs/";
+static std::string DEFAULT_IPFS_SERVICE_URL = "ipfsm.405Coin.com";
+static std::string DEFAULT_IPFS_GATEWAY_URL = "https://ipfsweb.405Coin.com/ipfs/";
 
 void download(const std::string cid, std::string& response_data);
 void upload(const std::string& file_path, std::string& response_data);

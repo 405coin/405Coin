@@ -26,7 +26,7 @@
      <item>
       <widget class="QValidatedLineEdit" name="uriEdit">
        <property name="placeholderText">
-        <string notr="true">raptoreum:</string>
+        <string notr="true">405Coin:</string>
        </property>
       </widget>
      </item>

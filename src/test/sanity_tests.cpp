@@ -4,7 +4,7 @@
 
 #include <compat/sanity.h>
 #include <key.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 #include <util/time.h>
 
 #include <boost/test/unit_test.hpp>

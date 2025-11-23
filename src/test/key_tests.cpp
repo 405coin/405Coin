@@ -9,7 +9,7 @@
 #include <uint256.h>
 #include <util/system.h>
 #include <util/strencodings.h>
-#include <test/test_raptoreum.h>
+#include <test/test_405Coin.h>
 
 #include <string>
 #include <vector>
