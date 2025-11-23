@@ -1,0 +1,47 @@
+name: Replace repo from 405Coin.zip
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "405Coin.zip"
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_PAT: ${{ secrets.GH_PAT }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Extract 405Coin.zip to temp dir
+        run: |
+          mkdir new_content
+          unzip 405Coin.zip -d new_content
+
+      - name: Sync files from ZIP (with delete)
+        run: |
+          rsync -a --delete new_content/ ./ \
+            --exclude '.git/' \
+            --exclude '.github/'
+
+          rm -rf new_content
+          rm -f 405Coin.zip
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Replace repo from 405Coin.zip" || echo "Nothing to commit"
+
+      - name: Push changes
+        run: |
+          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git
+          git push origin HEAD:main
